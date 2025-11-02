@@ -1,0 +1,42 @@
+[
+    
+    {
+        "nombre": "Alisa",
+        "icon": "/imagenes/personajesIcons/Alya.jpg",
+        "ataque": "Release the Kraken",
+        "porcentaje": 20,
+        "poder": 75,
+        "resistencia": 75,
+        "sanidad": 75
+    },
+    {
+        "nombre": "Aquaman",
+        "icon": "/imagenes/personajesIcons/Aquaman.jpg",
+        "ataque": "Release the Kraken",
+        "porcentaje": 20,
+        "poder": 75,
+        "resistencia": 75,
+        "sanidad": 75
+    },
+    {
+        "nombre": "Manta negra",
+        "icon": "/imagenes/personajesIcons/mantaNegra.jpeg",
+        "ataque": "Release the Kraken",
+        "porcentaje": 20,
+        "poder": 75,
+        "resistencia": 75,
+        "sanidad": 75
+    },
+    {
+        "nombre":  "Gabito",
+        "icon": "/imagenes/personajesIcons/gabo.jpeg",
+        "ataque": "Release the Kraken",
+        "porcentaje": 20,
+        "poder": 75,
+        "resistencia": 75,
+        "sanidad": 75
+    }
+
+    
+
+]
