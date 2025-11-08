@@ -59,9 +59,10 @@ public class Juego extends javax.swing.JFrame {
         try {
             for (Personaje p : this.todosLosPersonajes) {
                 JPanel panelPersonaje = new JPanel();
+                panelPersonaje.setOpaque(false);
+                panelPersonaje.setBorder(null);
                 panelPersonaje.setLayout(new javax.swing.BoxLayout(panelPersonaje, javax.swing.BoxLayout.Y_AXIS));
 
-                panelPersonaje.setOpaque(false);
                 
                 JLabel lblHumanidad = new JLabel("Humanidad: " + p.getPorcentaje());
                 lblHumanidad.setAlignmentX(JComponent.CENTER_ALIGNMENT);
@@ -160,12 +161,17 @@ public class Juego extends javax.swing.JFrame {
      */
     
     private void colocarFondos(){
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
+        
         JPanelImage miImagen = new JPanelImage(Menu,"/imagenes/fondoMenu.jpg");
         Menu.add(miImagen).repaint();
         JPanelImage miImagen2 = new JPanelImage(luchadores, "/imagenes/marcoPersonajes.png");
         luchadores.add(miImagen2).repaint();
         JPanelImage miImagen3 = new JPanelImage(Juego,"/imagenes/fondoBatalla.jpeg");
         Juego.add(miImagen3).repaint();
+        JPanelImage miImagen4 = new JPanelImage(SeleccionLuchadores, "/imagenes/fondoSeleccion.jpeg");
+        SeleccionLuchadores.add(miImagen4).repaint();
         
         java.awt.Color fondoNegroTransparente = new java.awt.Color(0, 0, 0, 100);
         panelBitacora.setBackground(fondoNegroTransparente);
@@ -310,11 +316,16 @@ public class Juego extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Selección de luchadores");
 
+        luchadores.setOpaque(false);
+
         jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setOpaque(false);
 
+        jugadoresScroll.setForeground(new java.awt.Color(0, 0, 0));
         jugadoresScroll.setOpaque(false);
         jugadoresScroll.setLayout(new java.awt.GridLayout(0, 3, 0, 35));
         jScrollPane1.setViewportView(jugadoresScroll);
