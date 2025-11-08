@@ -858,7 +858,8 @@ public class Juego extends javax.swing.JFrame {
                 
             }
             
-            
+            ReleaseTheKraken ataque1 = new ReleaseTheKraken(100,tablero);
+            ataque1.release_the_kraken();
             vidaTropas();
             
             cardLayout = (CardLayout) (getContentPane().getLayout());

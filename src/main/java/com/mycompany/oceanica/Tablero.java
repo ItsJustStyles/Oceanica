@@ -195,4 +195,15 @@ public class Tablero{
         }
     }
     
+    public Casilla CasillaPorCords(int fila,int columna){
+        for(Casilla c : casillas){
+            if(c.getX() == fila && c.getY() == columna){
+                return c;
+
+            }
+        }
+        return null;
+      
+    }
+    
 }
