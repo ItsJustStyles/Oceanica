@@ -190,7 +190,9 @@ public class Tablero{
         for(Casilla c : casillas){
             if(c.getX() == fila && c.getY() == columna){
                 c.recibirAtaque(dano);
-                c.ponerX();
+                if(!c.esta_vivo()){
+                    c.ponerX();
+                }
             }
         }
     }

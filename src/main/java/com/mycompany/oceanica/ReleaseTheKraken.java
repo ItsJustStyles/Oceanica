@@ -21,7 +21,7 @@ public class ReleaseTheKraken extends Ataque{
     
     public void tentaculos(){
         for(int i = 0; i < 3; i++){
-            int indexRandom = random.nextInt(600);
+            int indexRandom = random.nextInt(tablero.casillas.size());
             Casilla casillaRandom = tablero.casillas.get(indexRandom);
             danoArea(casillaRandom,1);
         }
@@ -39,7 +39,7 @@ public class ReleaseTheKraken extends Ataque{
     }
     
     public void release_the_kraken(){
-    int indexRandom = random.nextInt(600);
+    int indexRandom = random.nextInt(tablero.casillas.size());
     int rangoRandom = random.nextInt(9)+1;
     Casilla casillaRandom = tablero.casillas.get(indexRandom);
     danoArea(casillaRandom,rangoRandom);
