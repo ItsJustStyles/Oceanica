@@ -164,6 +164,15 @@ public class Juego extends javax.swing.JFrame {
         Menu.add(miImagen).repaint();
         JPanelImage miImagen2 = new JPanelImage(luchadores, "/imagenes/marcoPersonajes.png");
         luchadores.add(miImagen2).repaint();
+        JPanelImage miImagen3 = new JPanelImage(Juego,"/imagenes/fondoBatalla.jpeg");
+        Juego.add(miImagen3).repaint();
+        
+        java.awt.Color fondoNegroTransparente = new java.awt.Color(0, 0, 0, 100);
+        panelBitacora.setBackground(fondoNegroTransparente);
+        panelResultados.setBackground(fondoNegroTransparente);
+        panelVidaTropas.setBackground(fondoNegroTransparente);
+        panelConsola.setBackground(fondoNegroTransparente);
+        panelCoords.setBackground(fondoNegroTransparente);
         //jugadoresScroll.add(miImagen2).repaint(); No sirvio xd
     }
     
@@ -188,15 +197,15 @@ public class Juego extends javax.swing.JFrame {
         jugadoresScroll = new javax.swing.JPanel();
         Seleccionar = new javax.swing.JButton();
         Juego = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        panelBitacora = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelResultados = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         personajes = new javax.swing.JPanel();
         TableroJuego = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        panelVidaTropas = new javax.swing.JPanel();
+        panelConsola = new javax.swing.JPanel();
+        panelCoords = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -298,6 +307,7 @@ public class Juego extends javax.swing.JFrame {
         SeleccionLuchadores.setPreferredSize(new java.awt.Dimension(1022, 667));
 
         jLabel4.setFont(new java.awt.Font("Unispace", 0, 36)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Selección de luchadores");
 
         jScrollPane1.setBorder(null);
@@ -327,6 +337,7 @@ public class Juego extends javax.swing.JFrame {
         );
 
         Seleccionar.setText("Seleccionar luchadores");
+        Seleccionar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarActionPerformed(evt);
@@ -337,19 +348,17 @@ public class Juego extends javax.swing.JFrame {
         SeleccionLuchadores.setLayout(SeleccionLuchadoresLayout);
         SeleccionLuchadoresLayout.setHorizontalGroup(
             SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
-                .addGroup(SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SeleccionLuchadoresLayout.createSequentialGroup()
+                .addGroup(SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SeleccionLuchadoresLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
-                        .addComponent(luchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
+                        .addComponent(luchadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SeleccionLuchadoresLayout.createSequentialGroup()
                         .addGap(404, 404, 404)
                         .addComponent(Seleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(216, 216, 216)))
                 .addGap(212, 212, 212))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         SeleccionLuchadoresLayout.setVerticalGroup(
             SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,55 +374,62 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(SeleccionLuchadores, "card4");
 
+        Juego.setBackground(new java.awt.Color(0, 0, 0));
         Juego.setPreferredSize(new java.awt.Dimension(1022, 667));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(200, 150));
+        panelBitacora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        panelBitacora.setForeground(new java.awt.Color(255, 255, 255));
+        panelBitacora.setPreferredSize(new java.awt.Dimension(200, 150));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bitácora");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelBitacoraLayout = new javax.swing.GroupLayout(panelBitacora);
+        panelBitacora.setLayout(panelBitacoraLayout);
+        panelBitacoraLayout.setHorizontalGroup(
+            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBitacoraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelBitacoraLayout.setVerticalGroup(
+            panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBitacoraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelResultados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Resultado del ataque:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelResultadosLayout = new javax.swing.GroupLayout(panelResultados);
+        panelResultados.setLayout(panelResultadosLayout);
+        panelResultadosLayout.setHorizontalGroup(
+            panelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelResultadosLayout.setVerticalGroup(
+            panelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addContainerGap(248, Short.MAX_VALUE))
         );
 
-        personajes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        personajes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        personajes.setOpaque(false);
         personajes.setLayout(new java.awt.GridLayout(3, 2));
 
-        TableroJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TableroJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
 
         javax.swing.GroupLayout TableroJuegoLayout = new javax.swing.GroupLayout(TableroJuego);
         TableroJuego.setLayout(TableroJuegoLayout);
@@ -426,42 +442,42 @@ public class Juego extends javax.swing.JFrame {
             .addGap(0, 267, Short.MAX_VALUE)
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelVidaTropas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelVidaTropasLayout = new javax.swing.GroupLayout(panelVidaTropas);
+        panelVidaTropas.setLayout(panelVidaTropasLayout);
+        panelVidaTropasLayout.setHorizontalGroup(
+            panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 774, Short.MAX_VALUE)
+        );
+        panelVidaTropasLayout.setVerticalGroup(
+            panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+        panelConsola.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+
+        javax.swing.GroupLayout panelConsolaLayout = new javax.swing.GroupLayout(panelConsola);
+        panelConsola.setLayout(panelConsolaLayout);
+        panelConsolaLayout.setHorizontalGroup(
+            panelConsolaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelConsolaLayout.setVerticalGroup(
+            panelConsolaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 68, Short.MAX_VALUE)
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelCoords.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelCoordsLayout = new javax.swing.GroupLayout(panelCoords);
+        panelCoords.setLayout(panelCoordsLayout);
+        panelCoordsLayout.setHorizontalGroup(
+            panelCoordsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCoordsLayout.setVerticalGroup(
+            panelCoordsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
@@ -471,35 +487,35 @@ public class Juego extends javax.swing.JFrame {
             JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JuegoLayout.createSequentialGroup()
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelBitacora, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(panelResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TableroJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelVidaTropas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(personajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCoords, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelConsola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         JuegoLayout.setVerticalGroup(
             JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JuegoLayout.createSequentialGroup()
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JuegoLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelBitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JuegoLayout.createSequentialGroup()
                         .addComponent(TableroJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelVidaTropas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(personajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelConsola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelCoords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(Juego, "card5");
@@ -539,7 +555,7 @@ public class Juego extends javax.swing.JFrame {
             
             
             for(int i = 0; i < 3; i++){
-
+                 
                 var iconoOriginal = new ImageIcon(getClass().getResource(heroesElegidos.get(i).getRutaIcon()));
                 JLabel lblIcono = new JLabel();
                 ImageIcon iconoRedimensionado = new ImageIcon(
@@ -548,33 +564,52 @@ public class Juego extends javax.swing.JFrame {
                 lblIcono.setIcon(iconoRedimensionado);
                 lblIcono.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
+                java.awt.Color fondoNegroTransparente = new java.awt.Color(0, 0, 0, 100);
+                panelBitacora.setBackground(fondoNegroTransparente);
+                
+                
                 JPanel panelImagen = new JPanel();
+                panelImagen.setOpaque(true);
+                panelImagen.setBackground(fondoNegroTransparente);
                 panelImagen.setLayout(new javax.swing.BoxLayout(panelImagen, javax.swing.BoxLayout.X_AXIS));
                 
                 JPanel panelPersonaje = new JPanel();
+                panelPersonaje.setOpaque(false);
                 panelPersonaje.setLayout(new javax.swing.BoxLayout(panelPersonaje, javax.swing.BoxLayout.Y_AXIS));
                 panelPersonaje.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-                               
+                
+                
+                JLabel lblHumanidad = new JLabel(heroesElegidos.get(i).getPorcentaje() + "%");
+                lblHumanidad.setFont(new java.awt.Font("Segoe UI", 1, 18));
+                lblHumanidad.setForeground(Color.WHITE);
+                lblHumanidad.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
                 JLabel lblNombre = new JLabel(heroesElegidos.get(i).getNombre());
-                lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12));
+                lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 18));
+                lblNombre.setForeground(new java.awt.Color(158, 110, 33));
                 lblNombre.setAlignmentX(JComponent.CENTER_ALIGNMENT); 
 
                 JLabel lblAtaque = new JLabel(heroesElegidos.get(i).getAtaque());
+                lblAtaque.setFont(new java.awt.Font("Segoe UI", 1, 12));
+                lblAtaque.setForeground(new java.awt.Color(235, 12, 12));
                 lblAtaque.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
                 JLabel lblPoder = new JLabel("Poder: " + heroesElegidos.get(i).getPoder());
+                lblPoder.setForeground(java.awt.Color.WHITE);
                 lblPoder.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
                 JLabel lblResistencia = new JLabel("Resistencia: " + heroesElegidos.get(i).getResistencia());
+                lblResistencia.setForeground(java.awt.Color.WHITE);
                 lblResistencia.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
                 JLabel lblSanidad = new JLabel("Sanidad: " + heroesElegidos.get(i).getSanidad());
+                lblSanidad.setForeground(java.awt.Color.WHITE);
                 lblSanidad.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                                        
-                //panelPersonaje.add(lblHumanidad);
                 panelImagen.add(Box.createHorizontalStrut(25));
                 panelImagen.add(lblIcono);
                 panelImagen.add(Box.createHorizontalStrut(50));
+                panelPersonaje.add(lblHumanidad);
                 panelPersonaje.add(lblNombre);
                 panelPersonaje.add(lblAtaque);
                 panelPersonaje.add(lblPoder);
@@ -647,14 +682,14 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jugadoresScroll;
     private javax.swing.JPanel luchadores;
+    private javax.swing.JPanel panelBitacora;
+    private javax.swing.JPanel panelConsola;
+    private javax.swing.JPanel panelCoords;
+    private javax.swing.JPanel panelResultados;
+    private javax.swing.JPanel panelVidaTropas;
     private javax.swing.JPanel personajes;
     // End of variables declaration//GEN-END:variables
 }
