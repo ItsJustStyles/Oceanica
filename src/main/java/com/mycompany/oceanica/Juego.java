@@ -6,6 +6,8 @@ package com.mycompany.oceanica;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -189,7 +192,7 @@ public class Juego extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        personajes = new javax.swing.JPanel();
         TableroJuego = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -201,7 +204,7 @@ public class Juego extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Menu.setPreferredSize(new java.awt.Dimension(600, 400));
+        Menu.setPreferredSize(new java.awt.Dimension(1022, 667));
 
         Jugar.setText("Jugar");
         Jugar.addActionListener(new java.awt.event.ActionListener() {
@@ -227,12 +230,12 @@ public class Juego extends javax.swing.JFrame {
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(372, 372, 372)
+                .addGap(463, 463, 463)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +246,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(Jugar)
                 .addGap(180, 180, 180)
                 .addComponent(Salir)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(Menu, "card2");
@@ -283,17 +286,16 @@ public class Juego extends javax.swing.JFrame {
                 .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
+                .addGap(80, 80, 80)
                 .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BuscarPartidaLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton1))
-                    .addGroup(BuscarPartidaLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton2)))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(493, Short.MAX_VALUE))
         );
 
         getContentPane().add(BuscarPartida, "card3");
+
+        SeleccionLuchadores.setPreferredSize(new java.awt.Dimension(1022, 667));
 
         jLabel4.setFont(new java.awt.Font("Unispace", 0, 36)); // NOI18N
         jLabel4.setText("Selección de luchadores");
@@ -338,15 +340,16 @@ public class Juego extends javax.swing.JFrame {
             .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
                 .addGroup(SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jLabel4))
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(213, 213, 213)
                         .addComponent(luchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SeleccionLuchadoresLayout.createSequentialGroup()
-                        .addGap(326, 326, 326)
-                        .addComponent(Seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                        .addGap(404, 404, 404)
+                        .addComponent(Seleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(216, 216, 216)))
+                .addGap(212, 212, 212))
         );
         SeleccionLuchadoresLayout.setVerticalGroup(
             SeleccionLuchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,6 +364,8 @@ public class Juego extends javax.swing.JFrame {
         );
 
         getContentPane().add(SeleccionLuchadores, "card4");
+
+        Juego.setPreferredSize(new java.awt.Dimension(1022, 667));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 150));
@@ -405,18 +410,8 @@ public class Juego extends javax.swing.JFrame {
                 .addContainerGap(248, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        personajes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        personajes.setLayout(new java.awt.GridLayout(3, 2));
 
         TableroJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -424,11 +419,11 @@ public class Juego extends javax.swing.JFrame {
         TableroJuego.setLayout(TableroJuegoLayout);
         TableroJuegoLayout.setHorizontalGroup(
             TableroJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
         TableroJuegoLayout.setVerticalGroup(
             TableroJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 267, Short.MAX_VALUE)
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -480,10 +475,11 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TableroJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TableroJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(personajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -499,7 +495,7 @@ public class Juego extends javax.swing.JFrame {
                         .addComponent(TableroJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(personajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -539,9 +535,65 @@ public class Juego extends javax.swing.JFrame {
             TableroJuego.add(jpanel, java.awt.BorderLayout.CENTER);
             TableroJuego.revalidate();
             TableroJuego.repaint();
+            
+            
+            
+            for(int i = 0; i < 3; i++){
+
+                var iconoOriginal = new ImageIcon(getClass().getResource(heroesElegidos.get(i).getRutaIcon()));
+                JLabel lblIcono = new JLabel();
+                ImageIcon iconoRedimensionado = new ImageIcon(
+                iconoOriginal.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)
+                );
+                lblIcono.setIcon(iconoRedimensionado);
+                lblIcono.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
+                JPanel panelImagen = new JPanel();
+                panelImagen.setLayout(new javax.swing.BoxLayout(panelImagen, javax.swing.BoxLayout.X_AXIS));
+                
+                JPanel panelPersonaje = new JPanel();
+                panelPersonaje.setLayout(new javax.swing.BoxLayout(panelPersonaje, javax.swing.BoxLayout.Y_AXIS));
+                panelPersonaje.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                               
+                JLabel lblNombre = new JLabel(heroesElegidos.get(i).getNombre());
+                lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12));
+                lblNombre.setAlignmentX(JComponent.CENTER_ALIGNMENT); 
+
+                JLabel lblAtaque = new JLabel(heroesElegidos.get(i).getAtaque());
+                lblAtaque.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
+                JLabel lblPoder = new JLabel("Poder: " + heroesElegidos.get(i).getPoder());
+                lblPoder.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
+                JLabel lblResistencia = new JLabel("Resistencia: " + heroesElegidos.get(i).getResistencia());
+                lblResistencia.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
+                JLabel lblSanidad = new JLabel("Sanidad: " + heroesElegidos.get(i).getSanidad());
+                lblSanidad.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                                       
+                //panelPersonaje.add(lblHumanidad);
+                panelImagen.add(Box.createHorizontalStrut(25));
+                panelImagen.add(lblIcono);
+                panelImagen.add(Box.createHorizontalStrut(50));
+                panelPersonaje.add(lblNombre);
+                panelPersonaje.add(lblAtaque);
+                panelPersonaje.add(lblPoder);
+                panelPersonaje.add(lblResistencia);
+                panelPersonaje.add(lblSanidad);
+                panelImagen.add(panelPersonaje);
+                panelImagen.add(Box.createHorizontalStrut(25));
+                
+                
+                //personajes.add(lblIcono);
+                personajes.add(panelImagen);
+                
+                
+            }
+
 
             cardLayout = (CardLayout) (getContentPane().getLayout());
             cardLayout.show(getContentPane(), "card5");
+            
             
         }
         
@@ -597,12 +649,12 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jugadoresScroll;
     private javax.swing.JPanel luchadores;
+    private javax.swing.JPanel personajes;
     // End of variables declaration//GEN-END:variables
 }
