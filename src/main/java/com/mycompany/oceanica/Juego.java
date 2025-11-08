@@ -42,13 +42,6 @@ public class Juego extends javax.swing.JFrame {
     public Juego() throws IOException {
         initComponents();
         
-        tablero = new Tablero();
-        JPanel jpanel = tablero.crearTablero();
-        TableroJuego.setLayout(new java.awt.BorderLayout());
-        TableroJuego.add(jpanel, java.awt.BorderLayout.CENTER);
-        TableroJuego.revalidate();
-        TableroJuego.repaint();
-        
         //Para aumentar la sensibilidad del scroll en personajes xd
         JScrollBar verticalBar = jScrollPane1.getVerticalScrollBar();
         verticalBar.setUnitIncrement(25);
@@ -56,6 +49,7 @@ public class Juego extends javax.swing.JFrame {
         colocarFondos();
         this.todosLosPersonajes = GestorJson.cargarPersonajes();
         cargarPersonajesEnScrollPanel();
+        
     }
 
     private void cargarPersonajesEnScrollPanel(){
@@ -539,10 +533,18 @@ public class Juego extends javax.swing.JFrame {
             for (Personaje p : heroesElegidos) {
                 System.out.println("Nombre: " + p.getNombre());
             }
+            tablero = new Tablero();
+            JPanel jpanel = tablero.crearTablero(heroesElegidos.get(0),heroesElegidos.get(1),heroesElegidos.get(2));
+            TableroJuego.setLayout(new java.awt.BorderLayout());
+            TableroJuego.add(jpanel, java.awt.BorderLayout.CENTER);
+            TableroJuego.revalidate();
+            TableroJuego.repaint();
 
             cardLayout = (CardLayout) (getContentPane().getLayout());
             cardLayout.show(getContentPane(), "card5");
+            
         }
+        
     }//GEN-LAST:event_SeleccionarActionPerformed
 
     /**

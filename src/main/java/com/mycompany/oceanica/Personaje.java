@@ -4,6 +4,8 @@
  */
 package com.mycompany.oceanica;
 
+import java.awt.Color;
+
 /**
  *
  * @author lacay
@@ -16,6 +18,7 @@ public class Personaje {
     private int poder;
     private int resistencia;
     private int sanidad;
+    private Color color;
 
     public String getNombre() {
         return nombre;
@@ -44,6 +47,12 @@ public class Personaje {
     public int getSanidad() {
         return sanidad;
     }
+
+    public Color getColor() {
+        return color;
+    }
+    
+
 
     
     
