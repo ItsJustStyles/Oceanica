@@ -39,7 +39,7 @@ public class Juego extends javax.swing.JFrame {
     private final Set<String> idsSeleccionados = new HashSet<>(); 
     private final Map<String, JComponent> componentesSeleccionados = new HashMap<>(); 
 
-    private final Border BORDE_SELECCION = BorderFactory.createLineBorder(Color.YELLOW, 3);
+    private final Border BORDE_SELECCION = BorderFactory.createLineBorder(new Color(13, 35, 71), 3);
     private final Border BORDE_NORMAL = BorderFactory.createEmptyBorder();
     
     
@@ -766,10 +766,17 @@ public class Juego extends javax.swing.JFrame {
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         // TODO add your handling code here:
+        int porcentaje = 0;
         if (idsSeleccionados.size() == 3) {
             heroesElegidos = obtenerPersonajesSeleccionados();
             for (Personaje p : heroesElegidos) {
                 System.out.println("Nombre: " + p.getNombre());
+                porcentaje += p.getPorcentaje();
+            }
+            if(porcentaje !=  100){
+                JOptionPane.showMessageDialog(this, "Los porcentajes de los personajes deben de sumar 100%");
+                return;
+                
             }
             tablero = new Tablero();
             JPanel jpanel = tablero.crearTablero(heroesElegidos.get(0),heroesElegidos.get(1),heroesElegidos.get(2));
