@@ -42,6 +42,7 @@ public class Juego extends javax.swing.JFrame {
     private final Border BORDE_SELECCION = BorderFactory.createLineBorder(Color.YELLOW, 3);
     private final Border BORDE_NORMAL = BorderFactory.createEmptyBorder();
     
+    
     public Juego() throws IOException {
         initComponents();
         
@@ -140,6 +141,43 @@ public class Juego extends javax.swing.JFrame {
         System.out.println("Personajes seleccionados: " + idsSeleccionados.size());
     }
     
+    
+    public void vidaTropas(){
+
+        String textoVida = "Vida: " + tablero.casillasVivas() + "%"; 
+        String textoCasillasDestruidas = "Casillas destruidas: " + tablero.casillasDestruidas();
+
+        String nombreP1 = heroesElegidos.get(0).getNombre();
+        String nombreP2 = heroesElegidos.get(1).getNombre();
+        String nombreP3 = heroesElegidos.get(2).getNombre();
+
+        String casillasP1 = tablero.casillasDestruidasP1() + " de " + tablero.casillasP1.size() + " casillas";
+        String porcentajeP1 = tablero.porcentajeP1() + "%";
+        lblporcentajeP1.setText(porcentajeP1);
+        lblnombreP1.setText(nombreP1);
+        lblDestruidasP1.setText(casillasP1);
+
+        String casillasP2 = tablero.casillasDestruidasP1() + " de " + tablero.casillasP2.size() + " casillas";
+        String porcentajeP2 = tablero.porcentajeP2() + "%";
+        lblporcentajeP2.setText(porcentajeP2);
+        lblnombreP2.setText(nombreP2);
+        lblDestruidasP2.setText(casillasP2);
+
+        String casillasP3 = tablero.casillasDestruidasP1() + " de " + tablero.casillasP3.size() + " casillas";
+        String porcentajeP3 = tablero.porcentajeP3() + "%";
+        lblporcentajeP3.setText(porcentajeP3);
+        lblnombreP3.setText(nombreP3);
+        lblDestruidasP3.setText(casillasP3);
+
+        lblVidaTotal.setText(textoVida);
+        lblVidaTotal.setForeground(Color.WHITE);
+        lblcasillasDestruidas.setText(textoCasillasDestruidas);
+        lblcasillasDestruidas.setForeground(Color.WHITE);
+
+        panelVidaTropas.repaint();
+        
+    }
+    
     public List<Personaje> obtenerPersonajesSeleccionados() {
     
     List<Personaje> listaFinal = new ArrayList<>();
@@ -173,7 +211,12 @@ public class Juego extends javax.swing.JFrame {
         JPanelImage miImagen4 = new JPanelImage(SeleccionLuchadores, "/imagenes/fondoSeleccion.jpeg");
         SeleccionLuchadores.add(miImagen4).repaint();
         
-        java.awt.Color fondoNegroTransparente = new java.awt.Color(0, 0, 0, 100);
+        Color fondoNegroTransparente = new Color(0, 0, 0, 100);
+        Color fondoCuadrado = new Color(38, 84, 158, 100);
+        jpanelP1.setBackground(fondoCuadrado);
+        jpanelP2.setBackground(fondoCuadrado);
+        jpanelP3.setBackground(fondoCuadrado);
+        
         panelBitacora.setBackground(fondoNegroTransparente);
         panelResultados.setBackground(fondoNegroTransparente);
         panelVidaTropas.setBackground(fondoNegroTransparente);
@@ -210,6 +253,20 @@ public class Juego extends javax.swing.JFrame {
         personajes = new javax.swing.JPanel();
         TableroJuego = new javax.swing.JPanel();
         panelVidaTropas = new javax.swing.JPanel();
+        lblVidaTotal = new javax.swing.JLabel();
+        lblcasillasDestruidas = new javax.swing.JLabel();
+        jpanelP1 = new javax.swing.JPanel();
+        lblnombreP1 = new javax.swing.JLabel();
+        lblporcentajeP1 = new javax.swing.JLabel();
+        lblDestruidasP1 = new javax.swing.JLabel();
+        jpanelP2 = new javax.swing.JPanel();
+        lblnombreP2 = new javax.swing.JLabel();
+        lblporcentajeP2 = new javax.swing.JLabel();
+        lblDestruidasP2 = new javax.swing.JLabel();
+        jpanelP3 = new javax.swing.JPanel();
+        lblnombreP3 = new javax.swing.JLabel();
+        lblporcentajeP3 = new javax.swing.JLabel();
+        lblDestruidasP3 = new javax.swing.JLabel();
         panelConsola = new javax.swing.JPanel();
         panelCoords = new javax.swing.JPanel();
 
@@ -250,7 +307,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +345,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 562, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 706, Short.MAX_VALUE)
                 .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -305,7 +362,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(493, Short.MAX_VALUE))
+                .addContainerGap(526, Short.MAX_VALUE))
         );
 
         getContentPane().add(BuscarPartida, "card3");
@@ -337,7 +394,7 @@ public class Juego extends javax.swing.JFrame {
             .addGroup(luchadoresLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         luchadoresLayout.setVerticalGroup(
             luchadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,7 +435,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(40, 40, 40)
                 .addComponent(luchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(Seleccionar)
                 .addContainerGap())
         );
@@ -455,15 +512,172 @@ public class Juego extends javax.swing.JFrame {
 
         panelVidaTropas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
 
+        lblVidaTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblVidaTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblVidaTotal.setText("Vida: 100%");
+
+        lblcasillasDestruidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblcasillasDestruidas.setForeground(new java.awt.Color(255, 255, 255));
+        lblcasillasDestruidas.setText("Casillas destruidas: 0");
+
+        jpanelP1.setForeground(new java.awt.Color(255, 0, 204));
+
+        lblnombreP1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblnombreP1.setForeground(new java.awt.Color(255, 255, 255));
+        lblnombreP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblnombreP1.setText("Nombre");
+        lblnombreP1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblporcentajeP1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblporcentajeP1.setForeground(new java.awt.Color(255, 255, 255));
+        lblporcentajeP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblporcentajeP1.setText("100%");
+        lblporcentajeP1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblDestruidasP1.setForeground(new java.awt.Color(255, 255, 255));
+        lblDestruidasP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDestruidasP1.setText("100 de 100 casillas");
+        lblDestruidasP1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jpanelP1Layout = new javax.swing.GroupLayout(jpanelP1);
+        jpanelP1.setLayout(jpanelP1Layout);
+        jpanelP1Layout.setHorizontalGroup(
+            jpanelP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblnombreP1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDestruidasP1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelP1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblporcentajeP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpanelP1Layout.setVerticalGroup(
+            jpanelP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelP1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblnombreP1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblporcentajeP1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDestruidasP1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpanelP2.setForeground(new java.awt.Color(255, 0, 204));
+
+        lblnombreP2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblnombreP2.setForeground(new java.awt.Color(255, 255, 255));
+        lblnombreP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblnombreP2.setText("Nombre");
+        lblnombreP2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblporcentajeP2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblporcentajeP2.setForeground(new java.awt.Color(255, 255, 255));
+        lblporcentajeP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblporcentajeP2.setText("100%");
+        lblporcentajeP2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblDestruidasP2.setForeground(new java.awt.Color(255, 255, 255));
+        lblDestruidasP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDestruidasP2.setText("100 de 100 casillas");
+        lblDestruidasP2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jpanelP2Layout = new javax.swing.GroupLayout(jpanelP2);
+        jpanelP2.setLayout(jpanelP2Layout);
+        jpanelP2Layout.setHorizontalGroup(
+            jpanelP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblnombreP2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelP2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblporcentajeP2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addComponent(lblDestruidasP2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        jpanelP2Layout.setVerticalGroup(
+            jpanelP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelP2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblnombreP2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblporcentajeP2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDestruidasP2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpanelP3.setForeground(new java.awt.Color(255, 0, 204));
+
+        lblnombreP3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblnombreP3.setForeground(new java.awt.Color(255, 255, 255));
+        lblnombreP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblnombreP3.setText("Nombre");
+        lblnombreP3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblporcentajeP3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblporcentajeP3.setForeground(new java.awt.Color(255, 255, 255));
+        lblporcentajeP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblporcentajeP3.setText("100%");
+        lblporcentajeP3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblDestruidasP3.setForeground(new java.awt.Color(255, 255, 255));
+        lblDestruidasP3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDestruidasP3.setText("100 de 100 casillas");
+        lblDestruidasP3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jpanelP3Layout = new javax.swing.GroupLayout(jpanelP3);
+        jpanelP3.setLayout(jpanelP3Layout);
+        jpanelP3Layout.setHorizontalGroup(
+            jpanelP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblnombreP3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelP3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblporcentajeP3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addComponent(lblDestruidasP3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        jpanelP3Layout.setVerticalGroup(
+            jpanelP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelP3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblnombreP3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblporcentajeP3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDestruidasP3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelVidaTropasLayout = new javax.swing.GroupLayout(panelVidaTropas);
         panelVidaTropas.setLayout(panelVidaTropasLayout);
         panelVidaTropasLayout.setHorizontalGroup(
             panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 774, Short.MAX_VALUE)
+            .addGroup(panelVidaTropasLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpanelP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVidaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelVidaTropasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblcasillasDestruidas, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVidaTropasLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jpanelP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jpanelP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 297, Short.MAX_VALUE))))
         );
         panelVidaTropasLayout.setVerticalGroup(
             panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelVidaTropasLayout.createSequentialGroup()
+                .addGroup(panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaTotal)
+                    .addComponent(lblcasillasDestruidas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelVidaTropasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpanelP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpanelP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpanelP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         panelConsola.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
@@ -635,8 +849,9 @@ public class Juego extends javax.swing.JFrame {
                 
                 
             }
-
-
+            
+            vidaTropas();
+            
             cardLayout = (CardLayout) (getContentPane().getLayout());
             cardLayout.show(getContentPane(), "card5");
             
@@ -694,7 +909,21 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpanelP1;
+    private javax.swing.JPanel jpanelP2;
+    private javax.swing.JPanel jpanelP3;
     private javax.swing.JPanel jugadoresScroll;
+    private javax.swing.JLabel lblDestruidasP1;
+    private javax.swing.JLabel lblDestruidasP2;
+    private javax.swing.JLabel lblDestruidasP3;
+    private javax.swing.JLabel lblVidaTotal;
+    private javax.swing.JLabel lblcasillasDestruidas;
+    private javax.swing.JLabel lblnombreP1;
+    private javax.swing.JLabel lblnombreP2;
+    private javax.swing.JLabel lblnombreP3;
+    private javax.swing.JLabel lblporcentajeP1;
+    private javax.swing.JLabel lblporcentajeP2;
+    private javax.swing.JLabel lblporcentajeP3;
     private javax.swing.JPanel luchadores;
     private javax.swing.JPanel panelBitacora;
     private javax.swing.JPanel panelConsola;
