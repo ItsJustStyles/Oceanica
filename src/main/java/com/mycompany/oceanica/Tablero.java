@@ -22,6 +22,11 @@ import javax.swing.SwingConstants;
  */
 public class Tablero{
     private static final int FILAS = 20;
+    List<Casilla> casillas = new ArrayList<>();
+    List<Casilla> casillasP1 = new ArrayList<>();
+    List<Casilla> casillasP2 = new ArrayList<>();
+    List<Casilla> casillasP3 = new ArrayList<>();
+    
     private static final int COLUMNAS = 30;
     Random random = new Random();
     
@@ -55,13 +60,13 @@ public class Tablero{
                 JPanel celda;
                 switch (seleccion) {
                     case 0:
-                        celda = crearCeldaTablero(f, c, p1, Color.BLUE);
+                        celda = crearCeldaTablero(f, c, p1, new Color(5,36,135), casillasP1);
                         break;
                     case 1:
-                        celda = crearCeldaTablero(f, c, p2, Color.RED);
+                        celda = crearCeldaTablero(f, c, p2, new Color(145,17,6),casillasP2);
                         break;
                     default:
-                        celda = crearCeldaTablero(f, c, p3, Color.GREEN); // ojo: p3
+                        celda = crearCeldaTablero(f, c, p3,new Color(18,112,3), casillasP3); // ojo: p3
                         break;
                 }
                 panelTablero.add(celda);
@@ -70,9 +75,11 @@ public class Tablero{
         return panelTablero;
     }
     
-    private JPanel crearCeldaTablero(int fila, int columna,Personaje p, Color color) {
+    private JPanel crearCeldaTablero(int fila, int columna,Personaje p, Color color, List<Casilla> personaje) {
         JPanel celda = new JPanel();
         Casilla casilla = new Casilla(100,p,fila,columna,celda);
+        casillas.add(casilla);
+        personaje.add(casilla);
         celda.setBackground(color); 
         celda.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
         return celda;
@@ -93,5 +100,89 @@ public class Tablero{
         vacia.setOpaque(true);
         vacia.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
         return vacia;
+    }
+    
+    public int casillasVivas(){
+        int contadorCasillasVivas = 0;
+        for(Casilla c : casillas){
+            if(c.esta_vivo()){
+                contadorCasillasVivas++;
+            }
+        }
+        int porcentajeVivo = (int) ((contadorCasillasVivas * 100.0)/600.0);
+        return porcentajeVivo;
+    }
+    
+    public int casillasDestruidas(){
+        int contadorCasillasDestruidas = 0;
+        for(Casilla c : casillas){
+            if(!c.esta_vivo()){
+                contadorCasillasDestruidas++;
+            }
+        }
+        return contadorCasillasDestruidas;
+    }
+    
+    public int casillasDestruidasP1(){
+        int contadorCasillasDestruidas = 0;
+        for(Casilla c : casillasP1){
+            if(!c.esta_vivo()){
+                contadorCasillasDestruidas++;
+            }
+        }
+        return contadorCasillasDestruidas;
+    }
+    
+        public int casillasDestruidasP2(){
+        int contadorCasillasDestruidas = 0;
+        for(Casilla c : casillasP2){
+            if(!c.esta_vivo()){
+                contadorCasillasDestruidas++;
+            }
+        }
+        return contadorCasillasDestruidas;
+    }
+      
+    public int casillasDestruidasP3(){
+        int contadorCasillasDestruidas = 0;
+        for(Casilla c : casillasP3){
+            if(!c.esta_vivo()){
+                contadorCasillasDestruidas++;
+            }
+        }
+        return contadorCasillasDestruidas;
+    }
+    
+    public int porcentajeP1(){
+        int contadorCasillasMuertas = 0;
+        for(Casilla c : casillasP1){
+            if(!c.esta_vivo()){
+                contadorCasillasMuertas++;
+            }
+        }
+        int porcentajeMuerto = (int) ((contadorCasillasMuertas * 100.0)/casillasP1.size());
+        return porcentajeMuerto;
+    }
+    
+        public int porcentajeP2(){
+        int contadorCasillasMuertas = 0;
+        for(Casilla c : casillasP2){
+            if(!c.esta_vivo()){
+                contadorCasillasMuertas++;
+            }
+        }
+        int porcentajeMuerto = (int) ((contadorCasillasMuertas * 100.0)/casillasP2.size());
+        return porcentajeMuerto;
+    }
+        
+    public int porcentajeP3(){
+        int contadorCasillasMuertas = 0;
+        for(Casilla c : casillasP3){
+            if(!c.esta_vivo()){
+                contadorCasillasMuertas++;
+            }
+        }
+        int porcentajeMuerto = (int) ((contadorCasillasMuertas * 100.0)/casillasP3.size());
+        return porcentajeMuerto;
     }
 }
