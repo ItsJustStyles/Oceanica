@@ -28,6 +28,6 @@ public class JPanelImage extends JLabel {
     @Override
     public void paint(Graphics g){
         ImageIcon img= new ImageIcon(getClass().getResource(path));
-        g.drawImage(img.getImage(), 0, 0, x, y, null);
+        g.drawImage(img.getImage(), 0, 0, x, y, this);
     }
 }

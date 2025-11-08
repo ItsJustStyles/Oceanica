@@ -4,8 +4,12 @@
  */
 package com.mycompany.oceanica;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -38,7 +42,28 @@ public class Casilla {
     public void curar(int sanidad){
         this.vida += sanidad;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
     
-    
+    public void ponerX(){
+        JLabel x = new JLabel("X");
+        panel.setLayout(new BorderLayout());
+        x.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
+        x.setForeground(java.awt.Color.WHITE);
+        
+        panel.add(x, BorderLayout.CENTER);
+        panel.revalidate();
+        panel.repaint();
+        
+        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        x.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+        
+    }
     
 }

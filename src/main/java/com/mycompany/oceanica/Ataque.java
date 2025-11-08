@@ -9,5 +9,13 @@ package com.mycompany.oceanica;
  * @author lacay
  */
 public abstract class Ataque {
+    protected int dano;
+    protected Tablero tablero;
     
+    public Ataque(int dano, Tablero tablero){
+        this.dano = dano;
+        this.tablero = tablero;
+    }
+    
+    public abstract void aplicarDano(Casilla celda);
 }

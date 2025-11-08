@@ -158,13 +158,13 @@ public class Juego extends javax.swing.JFrame {
         lblnombreP1.setText(nombreP1);
         lblDestruidasP1.setText(casillasP1);
 
-        String casillasP2 = tablero.casillasDestruidasP1() + " de " + tablero.casillasP2.size() + " casillas";
+        String casillasP2 = tablero.casillasDestruidasP2() + " de " + tablero.casillasP2.size() + " casillas";
         String porcentajeP2 = tablero.porcentajeP2() + "%";
         lblporcentajeP2.setText(porcentajeP2);
         lblnombreP2.setText(nombreP2);
         lblDestruidasP2.setText(casillasP2);
 
-        String casillasP3 = tablero.casillasDestruidasP1() + " de " + tablero.casillasP3.size() + " casillas";
+        String casillasP3 = tablero.casillasDestruidasP3() + " de " + tablero.casillasP3.size() + " casillas";
         String porcentajeP3 = tablero.porcentajeP3() + "%";
         lblporcentajeP3.setText(porcentajeP3);
         lblnombreP3.setText(nombreP3);
@@ -857,6 +857,7 @@ public class Juego extends javax.swing.JFrame {
                 
                 
             }
+            
             
             vidaTropas();
             

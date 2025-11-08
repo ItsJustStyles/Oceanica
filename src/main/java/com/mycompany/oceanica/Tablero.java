@@ -185,4 +185,14 @@ public class Tablero{
         int porcentajeMuerto = (int) ((contadorCasillasMuertas * 100.0)/casillasP3.size());
         return porcentajeMuerto;
     }
+    
+    public void recibirDanoLocacion(int fila, int columna, int dano){
+        for(Casilla c : casillas){
+            if(c.getX() == fila && c.getY() == columna){
+                c.recibirAtaque(dano);
+                c.ponerX();
+            }
+        }
+    }
+    
 }
