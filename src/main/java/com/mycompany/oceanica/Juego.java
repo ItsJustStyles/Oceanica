@@ -45,6 +45,7 @@ public class Juego extends javax.swing.JFrame {
     
     public Juego() throws IOException {
         initComponents();
+        setResizable(false);
         
         //Para aumentar la sensibilidad del scroll en personajes xd
         JScrollBar verticalBar = jScrollPane1.getVerticalScrollBar();
