@@ -18,7 +18,6 @@ public class Personaje {
     private int poder;
     private int resistencia;
     private int sanidad;
-    private Color color;
 
     public String getNombre() {
         return nombre;
@@ -48,9 +47,7 @@ public class Personaje {
         return sanidad;
     }
 
-    public Color getColor() {
-        return color;
-    }
+
     
 
 

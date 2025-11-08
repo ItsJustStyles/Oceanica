@@ -26,9 +26,12 @@ public class Tablero{
         JPanel panelTablero = new JPanel();
         panelTablero.setLayout(new GridLayout(FILAS + 1, COLUMNAS + 1, 1, 1));        
         panelTablero.add(crearEtiquetaVacia());
-        int max1 = p1.getPorcentaje()/100 * 600;
-        int max2 = p2.getPorcentaje()/100 * 600;
-        int max3 = p3.getPorcentaje()/100 * 600;
+        int max1 = (int) ( (p1.getPorcentaje() * 600) / 100.0 );
+        int max2 =(int) ( (p2.getPorcentaje() * 600) / 100.0 );
+        int max3 = (int) ( (p3.getPorcentaje() * 600) / 100.0 );
+        int c1 = 0;
+        int c2 = 0;
+        int c3 = 0;
         
         for (int c = 1; c <= COLUMNAS; c++) {
             panelTablero.add(crearEtiquetaNumeracion(String.valueOf(c)));
@@ -40,29 +43,47 @@ public class Tablero{
 
             for (int c = 1; c <= COLUMNAS; c++) {
                 JPanel celda;
-                int seleccion = random.nextInt(3);
+                int seleccion;
+                Color color = null;
+           
+                while(true){
+                    seleccion = random.nextInt(3);
+                
+                    if(seleccion == 0 && c1 < max1){
+                        c1++;
+                        break;
+                    }else if(seleccion == 1 && c2 < max2){
+                        c2++;
+                        break;
+                    }else if(seleccion == 2 && c3 < max3){
+                        c3++;
+                        break;
+                    }
+                    //continue;
+                }
+                
                 switch (seleccion) {
                     case 0:
-                        celda = crearCeldaTablero(f, c, p1);
+                        celda = crearCeldaTablero(f, c, p1, color.blue);
                         break; 
                     case 1:
-                        celda = crearCeldaTablero(f, c, p2);
+                        celda = crearCeldaTablero(f, c, p2, color.red);
                         break;
                     default:
-                        celda = crearCeldaTablero(f, c, p2);
+                        celda = crearCeldaTablero(f, c, p2, color.green);
                         break; 
                 }
                 panelTablero.add(celda);
             }
         }
-        
+        //System.out.println(c1 + " " + c2 + " " + c3);
         return panelTablero;
     }
     
-    private JPanel crearCeldaTablero(int fila, int columna,Personaje p) {
+    private JPanel crearCeldaTablero(int fila, int columna,Personaje p, Color color) {
         JPanel celda = new JPanel();
         Casilla casilla = new Casilla(100,p,fila,columna,celda);
-        celda.setBackground(); 
+        celda.setBackground(color); 
         celda.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
         return celda;
     }
