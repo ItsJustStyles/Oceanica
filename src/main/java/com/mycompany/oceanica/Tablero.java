@@ -7,6 +7,9 @@ package com.mycompany.oceanica;
 import java.awt.Color;
 import java.awt.GridLayout;
 import static java.lang.Math.random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -22,61 +25,48 @@ public class Tablero{
     private static final int COLUMNAS = 30;
     Random random = new Random();
     
-    public JPanel crearTablero(Personaje p1,Personaje p2,Personaje p3){
+    public JPanel crearTablero(Personaje p1, Personaje p2, Personaje p3){
         JPanel panelTablero = new JPanel();
         panelTablero.setLayout(new GridLayout(FILAS + 1, COLUMNAS + 1, 1, 1));        
         panelTablero.add(crearEtiquetaVacia());
-        int max1 = (int) ( (p1.getPorcentaje() * 600) / 100.0 );
-        int max2 =(int) ( (p2.getPorcentaje() * 600) / 100.0 );
-        int max3 = (int) ( (p3.getPorcentaje() * 600) / 100.0 );
-        int c1 = 0;
-        int c2 = 0;
-        int c3 = 0;
-        
+
+        int total = FILAS * COLUMNAS; // 600
+        int max1 = (int) ((p1.getPorcentaje() * total) / 100.0);
+        int max2 = (int) ((p2.getPorcentaje() * total) / 100.0);
+        int max3 = total - max1 - max2; // asegura que sumen exacto
+
+        // Encabezado columnas
         for (int c = 1; c <= COLUMNAS; c++) {
             panelTablero.add(crearEtiquetaNumeracion(String.valueOf(c)));
         }
 
-        for (int f = 1; f <= FILAS; f++) {
-            
-            panelTablero.add(crearEtiquetaNumeracion(String.valueOf(f))); 
+        // Arma la bolsa y baraja
+        List<Integer> bolsa = new ArrayList<>(total);
+        for (int i = 0; i < max1; i++) bolsa.add(0);
+        for (int i = 0; i < max2; i++) bolsa.add(1);
+        for (int i = 0; i < max3; i++) bolsa.add(2);
+        Collections.shuffle(bolsa, random);
 
+        int idx = 0;
+        for (int f = 1; f <= FILAS; f++) {
+            panelTablero.add(crearEtiquetaNumeracion(String.valueOf(f)));
             for (int c = 1; c <= COLUMNAS; c++) {
+                int seleccion = bolsa.get(idx++);
                 JPanel celda;
-                int seleccion;
-                Color color = null;
-           
-                while(true){
-                    seleccion = random.nextInt(3);
-                
-                    if(seleccion == 0 && c1 < max1){
-                        c1++;
-                        break;
-                    }else if(seleccion == 1 && c2 < max2){
-                        c2++;
-                        break;
-                    }else if(seleccion == 2 && c3 < max3){
-                        c3++;
-                        break;
-                    }
-                    //continue;
-                }
-                
                 switch (seleccion) {
                     case 0:
-                        celda = crearCeldaTablero(f, c, p1, color.blue);
-                        break; 
+                        celda = crearCeldaTablero(f, c, p1, Color.BLUE);
+                        break;
                     case 1:
-                        celda = crearCeldaTablero(f, c, p2, color.red);
+                        celda = crearCeldaTablero(f, c, p2, Color.RED);
                         break;
                     default:
-                        celda = crearCeldaTablero(f, c, p2, color.green);
-                        break; 
+                        celda = crearCeldaTablero(f, c, p3, Color.GREEN); // ojo: p3
+                        break;
                 }
                 panelTablero.add(celda);
             }
         }
-        //System.out.println(c1 + " " + c2 + " " + c3);
         return panelTablero;
     }
     
