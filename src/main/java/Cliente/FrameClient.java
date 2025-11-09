@@ -62,6 +62,12 @@ public class FrameClient extends javax.swing.JFrame {
         txaMessages.setRows(5);
         jScrollPane1.setViewportView(txaMessages);
 
+        txfCommand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfCommandActionPerformed(evt);
+            }
+        });
+
         btnSend.setText("SEND");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +156,10 @@ public class FrameClient extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ListoActionPerformed
+
+    private void txfCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCommandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfCommandActionPerformed
 
     /**
      * @param args the command line arguments

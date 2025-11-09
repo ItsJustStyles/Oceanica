@@ -51,13 +51,13 @@ public class Server {
         }
     }
     public synchronized void markPlayerReady(String playerName) {
-    readyPlayers.add(playerName);
-    System.out.println("Jugador listo: " + playerName + " (" + readyPlayers.size() + "/" + connectedClients.size() + ")");
-    
-    if (readyPlayers.size() >= 2) { // mínimo 2 jugadores listos
-        System.out.println("Mínimo de jugadores listos alcanzado. Iniciando partida...");
-        broadcast(new CommandStartGame());
-    }
+        readyPlayers.add(playerName);
+        System.out.println("Jugador listo: " + playerName + " (" + readyPlayers.size() + "/" + connectedClients.size() + ")");
+
+        if (readyPlayers.size() >= 1) { // mínimo 2 jugadores listos
+            System.out.println("Mínimo de jugadores listos alcanzado. Iniciando partida...");
+            broadcast(new CommandStartGame());
+        }
 }
     
     void executeCommand(Command comando) {
@@ -125,6 +125,17 @@ public class Server {
 
     public Juego getRefFrame() {
         return refFrame;
+    }
+    
+    public ThreadServidor getClientByName(String targetName) {
+        
+        for (ThreadServidor clientThread : connectedClients) {
+            if (clientThread.name != null && clientThread.name.equalsIgnoreCase(targetName)) {
+                
+                return clientThread; // ¡Encontrado!
+            }
+        }
+        return null; 
     }
   
 }

@@ -20,13 +20,28 @@ public class CommandAttack extends Command{
     
     @Override
     public void processForServer(ThreadServidor threadServidor) {
-        this.setIsBroadcast(false);
-    }
-            
-//    @Override
-//    public void processInClient(Client client) {
-//        System.out.println("Procesando un attack");
-//    }
-    
+        String[] params = this.getParameters();
+        
+        String objetivo = params[1];
+        String row = params[2];
+        String columna = params[3];
+        System.out.println(objetivo);
+        ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(objetivo);
+        if(targetThread != null){
+            Command hitCommand = new CommandHit();
+            // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
+            try {
+                targetThread.objectSender.writeObject(hitCommand);
+                targetThread.objectSender.flush();
+            } catch (java.io.IOException ex) {
+                // Manejar la desconexión del objetivo
+                threadServidor.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
+            }
+            //this.setIsBroadcast(true);
+        }else{
+            this.setIsBroadcast(false);
+        }
+        
+    }    
     
 }
