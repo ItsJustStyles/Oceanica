@@ -13,6 +13,7 @@ import java.net.Socket;
 public class ThreadServidor extends Thread {
     private Server server;
     private Socket socket;
+    
     // Streams para leer y escribir objetos
     public ObjectInputStream objectListener;
     public ObjectOutputStream objectSender;
@@ -41,7 +42,8 @@ public class ThreadServidor extends Thread {
         while (isRunning) {
             try {
                 comando = (Command) objectListener.readObject();
-                server.getRefFrame().writeMessage("ThreadServer recibió: " + comando);
+                //No hace falta imprimir lo que se recibe del comando xd
+                //server.getRefFrame().writeMessage("ThreadServer recibió: " + comando);
                 comando.processForServer(this);
 
                 if (isActive)
@@ -62,4 +64,6 @@ public class ThreadServidor extends Thread {
     public void showAllClients() {
         this.server.showAllNames();
     }
+    
+    
 }

@@ -32,7 +32,7 @@ public class FrameClient extends javax.swing.JFrame {
         initComponents();
         String name = JOptionPane.showInputDialog(this, "Ingrese su nombre");
         this.setTitle(name);
-        client =  new Client(this, name);
+        //client =  new Client(this, name);
         
         
     }

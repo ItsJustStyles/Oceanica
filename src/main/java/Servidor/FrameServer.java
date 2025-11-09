@@ -14,7 +14,7 @@ public class FrameServer extends javax.swing.JFrame {
     
     public FrameServer() {
         initComponents();
-        server = new Server(this);
+        //server = new Server(this);
     }
 
     /**

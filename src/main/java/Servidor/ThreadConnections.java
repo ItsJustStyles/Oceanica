@@ -24,7 +24,7 @@ public class ThreadConnections extends Thread{
     public void run() {
         Socket newSocket = null;
         while (  server.getConnectedClients().size() < server.getMaxConections() ){
-            server.getRefFrame().writeMessage("Esperando conexión No.");
+            //server.getRefFrame().writeMessage("Esperando conexión No.");
             try {
                 System.out.println("tc1");
                 newSocket = server.getServerSocket().accept();
@@ -37,7 +37,7 @@ public class ThreadConnections extends Thread{
                 newServerThread.start();
                 System.out.println("tc5");
 
-                server.getRefFrame().writeMessage("cliente conectado");
+                //server.getRefFrame().writeMessage("cliente conectado");
                 System.out.println("tc6");
             
             } catch (IOException ex) {

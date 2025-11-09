@@ -4,6 +4,8 @@
  */
 package com.mycompany.oceanica;
 
+import Cliente.Client;
+import Servidor.Server;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -19,6 +21,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,6 +33,7 @@ public class Juego extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Juego.class.getName());
     
     private Tablero tablero;
+    private String nombreCivilización;
     
     private CardLayout cardLayout = new CardLayout();
     
@@ -193,6 +197,15 @@ public class Juego extends javax.swing.JFrame {
     return listaFinal;
 }
     
+    public void writeMessage(String msg){
+        jugadoresConectados.append(msg + "\n");
+    }
+    
+    public void clearMessages() {
+        // Establece el texto como una cadena vacía, borrando todo lo anterior.
+        jugadoresConectados.setText(""); 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -224,6 +237,10 @@ public class Juego extends javax.swing.JFrame {
         panelConsola.setBackground(fondoNegroTransparente);
         panelCoords.setBackground(fondoNegroTransparente);
         //jugadoresScroll.add(miImagen2).repaint(); No sirvio xd
+    }
+    
+    public void startGame(){
+        System.out.println("Comenzar partida xd");
     }
     
     
@@ -270,6 +287,9 @@ public class Juego extends javax.swing.JFrame {
         lblDestruidasP3 = new javax.swing.JLabel();
         panelConsola = new javax.swing.JPanel();
         panelCoords = new javax.swing.JPanel();
+        lobby = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jugadoresConectados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -336,6 +356,11 @@ public class Juego extends javax.swing.JFrame {
         });
 
         jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BuscarPartidaLayout = new javax.swing.GroupLayout(BuscarPartida);
         BuscarPartida.setLayout(BuscarPartidaLayout);
@@ -381,7 +406,6 @@ public class Juego extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setOpaque(false);
 
         jugadoresScroll.setForeground(new java.awt.Color(0, 0, 0));
         jugadoresScroll.setOpaque(false);
@@ -436,7 +460,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(40, 40, 40)
                 .addComponent(luchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(Seleccionar)
                 .addContainerGap())
         );
@@ -746,13 +770,45 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(Juego, "card5");
 
+        lobby.setMinimumSize(new java.awt.Dimension(1022, 667));
+        lobby.setPreferredSize(new java.awt.Dimension(1022, 667));
+
+        jugadoresConectados.setColumns(20);
+        jugadoresConectados.setRows(5);
+        jScrollPane2.setViewportView(jugadoresConectados);
+
+        javax.swing.GroupLayout lobbyLayout = new javax.swing.GroupLayout(lobby);
+        lobby.setLayout(lobbyLayout);
+        lobbyLayout.setHorizontalGroup(
+            lobbyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lobbyLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(387, Short.MAX_VALUE))
+        );
+        lobbyLayout.setVerticalGroup(
+            lobbyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lobbyLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(382, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(lobby, "card6");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
         // TODO add your handling code here:
-        cardLayout = (CardLayout) (getContentPane().getLayout());
-        cardLayout.show(getContentPane(), "card4");
+        String mensaje = "Ingrese el nomnre de su civilización:";
+        String titulo = "Nombre de civilización";
+        
+        nombreCivilización = JOptionPane.showInputDialog((JFrame)null, mensaje, titulo, JOptionPane.QUESTION_MESSAGE);
+        if (nombreCivilización != null && !nombreCivilización.trim().isEmpty()) {
+            cardLayout = (CardLayout) (getContentPane().getLayout());
+            cardLayout.show(getContentPane(), "card4");
+        }
     }//GEN-LAST:event_JugarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -762,6 +818,13 @@ public class Juego extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Server server;
+        server = new Server(this);
+        
+        Client clientHost = new Client(this, nombreCivilización);
+        
+        cardLayout = (CardLayout) (getContentPane().getLayout());
+        cardLayout.show(getContentPane(), "card6");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
@@ -861,12 +924,20 @@ public class Juego extends javax.swing.JFrame {
             vidaTropas();
             
             cardLayout = (CardLayout) (getContentPane().getLayout());
-            cardLayout.show(getContentPane(), "card5");
+            cardLayout.show(getContentPane(), "card3");
             
             
         }
         
     }//GEN-LAST:event_SeleccionarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Client cliente = new Client(this, nombreCivilización);
+        
+        cardLayout = (CardLayout) (getContentPane().getLayout());
+        cardLayout.show(getContentPane(), "card6");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -917,9 +988,11 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpanelP1;
     private javax.swing.JPanel jpanelP2;
     private javax.swing.JPanel jpanelP3;
+    private javax.swing.JTextArea jugadoresConectados;
     private javax.swing.JPanel jugadoresScroll;
     private javax.swing.JLabel lblDestruidasP1;
     private javax.swing.JLabel lblDestruidasP2;
@@ -932,6 +1005,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel lblporcentajeP1;
     private javax.swing.JLabel lblporcentajeP2;
     private javax.swing.JLabel lblporcentajeP3;
+    private javax.swing.JPanel lobby;
     private javax.swing.JPanel luchadores;
     private javax.swing.JPanel panelBitacora;
     private javax.swing.JPanel panelConsola;

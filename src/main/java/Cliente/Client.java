@@ -5,6 +5,7 @@
 package Cliente;
 
 import Models.CommandFactory;
+import com.mycompany.oceanica.Juego;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,14 +23,14 @@ public class Client {
     private final int PORT = 35500;
     private final String IP_ADDRESS = "localhost";
     private Socket socket;
-    private FrameClient refFrame;
+    private Juego refFrame;
     public ObjectInputStream objectListener;
     public ObjectOutputStream objectSender;
     private ThreadClient threadClient;
     
     public String name;
 
-    public Client(FrameClient refFrame, String name) {
+    public Client(Juego refFrame, String name) {
         this.refFrame = refFrame;
         this.name = name;
         this.connect();
@@ -67,12 +68,8 @@ public class Client {
     
     
 
-    public FrameClient getRefFrame() {
+    public Juego getRefFrame() {
         return refFrame;
     }
-    
-    
-    
-    
-    
+     
 }

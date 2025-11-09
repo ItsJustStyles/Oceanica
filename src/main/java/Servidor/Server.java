@@ -5,11 +5,14 @@
 package Servidor;
 import Models.CommandStartGame;
 import Models.Command;
+import Models.lobbyUpdateCommand;
+import com.mycompany.oceanica.Juego;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Set;
@@ -25,12 +28,12 @@ public class Server {
     private ServerSocket serverSocket;
     private ArrayList<ThreadServidor> connectedClients; // arreglo de hilos por cada cliente conectado
     //referencia a la pantalla
-    FrameServer refFrame;
+    Juego refFrame;
     private ThreadConnections connectionsThread;
     private final Set<String> readyPlayers = new HashSet<>();
 
 
-    public Server(FrameServer refFrame) {
+    public Server(Juego refFrame) {
         connectedClients = new ArrayList<ThreadServidor>();
         this.refFrame = refFrame;
         this.init();
@@ -42,7 +45,7 @@ public class Server {
     private void init(){
         try {
             serverSocket = new ServerSocket(PORT);
-            refFrame.writeMessage("Server running!!!");
+            //refFrame.writeMessage("Server running!!!");
         } catch (IOException ex) {
             refFrame.writeMessage("Error: " + ex.getMessage());
         }
@@ -98,10 +101,14 @@ public class Server {
     
     
     public void showAllNames(){
-        this.refFrame.writeMessage("Usuarios conectados");
+        List<String> players = new ArrayList<>();
+        //this.refFrame.clearMessages();
+        //this.refFrame.writeMessage("Usuarios conectados:");
         for (ThreadServidor client : connectedClients) {
-            this.refFrame.writeMessage(client.name);
+            players.add(client.name);
         }
+        lobbyUpdateCommand sync = new lobbyUpdateCommand(players);
+        broadcast(sync);
     }
 
     public int getMaxConections() {
@@ -116,7 +123,7 @@ public class Server {
         return connectedClients;
     }
 
-    public FrameServer getRefFrame() {
+    public Juego getRefFrame() {
         return refFrame;
     }
   

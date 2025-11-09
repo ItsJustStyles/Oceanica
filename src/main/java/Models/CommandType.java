@@ -20,7 +20,8 @@ public enum CommandType {
     GIVEUP(1),              // giveup
     NAME(2),                // name Andres
     READY(1),               // nuevo comando: jugador listo
-    START_GAME(0);          // nuevo comando: iniciar juego
+    START_GAME(0),          // nuevo comando: iniciar juego
+    LOBBY(0);
 
     private final int requiredParameters;
 
