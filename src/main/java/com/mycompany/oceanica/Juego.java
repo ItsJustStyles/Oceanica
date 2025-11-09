@@ -857,7 +857,8 @@ public class Juego extends javax.swing.JFrame {
                 
                 
             }
-            
+            PoseidonTrident ataque1 = new PoseidonTrident(100,tablero);
+            ataque1.explotarXCasillas(10);
             
             vidaTropas();
             
