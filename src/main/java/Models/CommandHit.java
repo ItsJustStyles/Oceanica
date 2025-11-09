@@ -13,8 +13,8 @@ import Servidor.ThreadServidor;
  */
 public class CommandHit extends Command{
 
-    public CommandHit() {
-        super(CommandType.HIT, new String[]{});
+    public CommandHit(String attackerName, String row, String col) {
+        super(CommandType.HIT,new String[]{attackerName, row, col});
     }
 
     @Override
@@ -24,6 +24,13 @@ public class CommandHit extends Command{
 
     @Override
     public void processInClient(Client client) {
+        String[] params = this.getParameters();
+        String attacker = params[0];
+        String row = params[1];
+        String col = params[2];
+        
+        String mensaje = "El jugador: " + attacker + " te atacó en fila: " + row + " y columna: " + col;
+        client.getRefFrame().writeBitacora(mensaje);
         client.getRefFrame().recibirAtaqueCliente();
     }
     

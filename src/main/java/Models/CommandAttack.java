@@ -28,7 +28,9 @@ public class CommandAttack extends Command{
         System.out.println(objetivo);
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(objetivo);
         if(targetThread != null){
-            Command hitCommand = new CommandHit();
+            
+            String attackerName = threadServidor.name;
+            Command hitCommand = new CommandHit(attackerName, row, columna);
             // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
             try {
                 targetThread.objectSender.writeObject(hitCommand);
@@ -37,11 +39,33 @@ public class CommandAttack extends Command{
                 // Manejar la desconexión del objetivo
                 threadServidor.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
             }
+            String[] broadcastParams = new String[]{threadServidor.name, objetivo, row, columna};
+            CommandAttack broadcastCommand = new CommandAttack(broadcastParams);
+            
+            // Reenviar a todos (BROADCAST)
+            threadServidor.getRefServer().broadcast(broadcastCommand);
             //this.setIsBroadcast(true);
         }else{
             this.setIsBroadcast(false);
         }
         
-    }    
+    }
+
+    @Override
+    public void processInClient(Client client) {
+        String[] params = this.getParameters();
+        String attackerName = params[0];
+        String targetName = params[1]; 
+        String row = params[2]; 
+        String col = params[3];
+        
+        String bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName + " en fila: " + row + " y columna: " + col;
+        if(!client.name.equals(targetName)){
+            client.getRefFrame().writeBitacora(bitacora);
+        }
+        
+    }
+    
+    
     
 }

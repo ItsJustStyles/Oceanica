@@ -215,6 +215,10 @@ public class Juego extends javax.swing.JFrame {
         jugadoresConectados.append(msg + "\n");
     }
     
+    public void writeBitacora(String msg){
+        bitacoraScroll.append(msg + "\n");
+    }
+    
     public void clearMessages() {
         // Establece el texto como una cadena vacía, borrando todo lo anterior.
         jugadoresConectados.setText(""); 
@@ -308,8 +312,12 @@ public class Juego extends javax.swing.JFrame {
         Juego = new javax.swing.JPanel();
         panelBitacora = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        bitacoraScroll = new javax.swing.JTextArea();
         panelResultados = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        resultadosScroll = new javax.swing.JScrollPane();
+        resultadoAreaScroll = new javax.swing.JTextArea();
         personajes = new javax.swing.JPanel();
         TableroJuego = new javax.swing.JPanel();
         panelVidaTropas = new javax.swing.JPanel();
@@ -523,6 +531,10 @@ public class Juego extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bitácora");
 
+        bitacoraScroll.setColumns(20);
+        bitacoraScroll.setRows(5);
+        jScrollPane3.setViewportView(bitacoraScroll);
+
         javax.swing.GroupLayout panelBitacoraLayout = new javax.swing.GroupLayout(panelBitacora);
         panelBitacora.setLayout(panelBitacoraLayout);
         panelBitacoraLayout.setHorizontalGroup(
@@ -530,14 +542,16 @@ public class Juego extends javax.swing.JFrame {
             .addGroup(panelBitacoraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         panelBitacoraLayout.setVerticalGroup(
             panelBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBitacoraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
         );
 
         panelResultados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
@@ -545,6 +559,10 @@ public class Juego extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Resultado del ataque:");
+
+        resultadoAreaScroll.setColumns(20);
+        resultadoAreaScroll.setRows(5);
+        resultadosScroll.setViewportView(resultadoAreaScroll);
 
         javax.swing.GroupLayout panelResultadosLayout = new javax.swing.GroupLayout(panelResultados);
         panelResultados.setLayout(panelResultadosLayout);
@@ -554,13 +572,15 @@ public class Juego extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addContainerGap(16, Short.MAX_VALUE))
+            .addComponent(resultadosScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         panelResultadosLayout.setVerticalGroup(
             panelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelResultadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultadosScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
         );
 
         personajes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
@@ -573,7 +593,7 @@ public class Juego extends javax.swing.JFrame {
         TableroJuego.setLayout(TableroJuegoLayout);
         TableroJuegoLayout.setHorizontalGroup(
             TableroJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         TableroJuegoLayout.setVerticalGroup(
             TableroJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1064,6 +1084,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel SeleccionLuchadores;
     private javax.swing.JButton Seleccionar;
     private javax.swing.JPanel TableroJuego;
+    private javax.swing.JTextArea bitacoraScroll;
     private javax.swing.JTextField consola;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1075,6 +1096,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jpanelP1;
     private javax.swing.JPanel jpanelP2;
     private javax.swing.JPanel jpanelP3;
@@ -1101,5 +1123,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel panelResultados;
     private javax.swing.JPanel panelVidaTropas;
     private javax.swing.JPanel personajes;
+    private javax.swing.JTextArea resultadoAreaScroll;
+    private javax.swing.JScrollPane resultadosScroll;
     // End of variables declaration//GEN-END:variables
 }
