@@ -43,6 +43,15 @@ public class FishTelepathy extends Ataque{
         danoArea(c4, rango);
     }
     
+    public void Pulp(){
+        int pulpos = (random.nextInt(21) + 30) * 8;
+        for(int i = 0; i < pulpos; i++){
+            int indexRandom = random.nextInt(tablero.casillas.size());
+            Casilla c = tablero.casillas.get(indexRandom);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 25);
+        }
+    }
+    
     
         public void danoArea(Casilla celda,int rango){
         int filaInicial = celda.getX();
