@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author lacay
  */
 public class JPanelImage extends JLabel {
-        private int x;
+    private int x;
     private int y;
     private String path;
 
@@ -30,4 +30,11 @@ public class JPanelImage extends JLabel {
         ImageIcon img= new ImageIcon(getClass().getResource(path));
         g.drawImage(img.getImage(), 0, 0, x, y, this);
     }
+
+    public void setPath(String path) {
+        this.path = path;
+        this.repaint();
+    }
+    
+    
 }
