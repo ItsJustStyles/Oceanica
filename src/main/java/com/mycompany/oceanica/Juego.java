@@ -238,6 +238,8 @@ public class Juego extends javax.swing.JFrame {
         Juego.add(miImagen3).repaint();
         JPanelImage miImagen4 = new JPanelImage(SeleccionLuchadores, "/imagenes/fondoSeleccion.jpeg");
         SeleccionLuchadores.add(miImagen4).repaint();
+        JPanelImage miImagen5 = new JPanelImage(BuscarPartida, "/imagenes/fondoBuscarPartida.png");
+        BuscarPartida.add(miImagen5).repaint();
         
         Color fondoNegroTransparente = new Color(0, 0, 0, 100);
         Color fondoCuadrado = new Color(38, 84, 158, 100);
@@ -295,10 +297,10 @@ public class Juego extends javax.swing.JFrame {
         Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         BuscarPartida = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCrearPartida = new javax.swing.JButton();
+        btnBuscarPartida = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         SeleccionLuchadores = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         luchadores = new javax.swing.JPanel();
@@ -389,51 +391,100 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(Menu, "card2");
 
-        jLabel2.setText("Crear partida");
+        BuscarPartida.setMinimumSize(new java.awt.Dimension(1022, 667));
+        BuscarPartida.setPreferredSize(new java.awt.Dimension(1022, 667));
 
-        jLabel3.setText("Buscar partida");
-
-        jButton1.setText("Crear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearPartida.setBackground(new java.awt.Color(6, 71, 12));
+        btnCrearPartida.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearPartida.setText("Crear Partida");
+        btnCrearPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCrearPartidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCrearPartidaMouseExited(evt);
+            }
+        });
+        btnCrearPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCrearPartidaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        btnBuscarPartida.setBackground(new java.awt.Color(6, 71, 12));
+        btnBuscarPartida.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarPartida.setText("Buscar Partida");
+        btnBuscarPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarPartidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarPartidaMouseExited(evt);
             }
         });
+        btnBuscarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPartidaActionPerformed(evt);
+            }
+        });
+
+        lblTitulo.setFont(new java.awt.Font("Impact", 0, 80)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(15, 68, 89));
+        lblTitulo.setText("OCEANIA");
+
+        jPanel1.setOpaque(false);
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 42, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout BuscarPartidaLayout = new javax.swing.GroupLayout(BuscarPartida);
         BuscarPartida.setLayout(BuscarPartidaLayout);
         BuscarPartidaLayout.setHorizontalGroup(
             BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BuscarPartidaLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 706, Short.MAX_VALUE)
-                .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(66, 66, 66))
+                .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BuscarPartidaLayout.createSequentialGroup()
+                        .addGap(450, 450, 450)
+                        .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCrearPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(BuscarPartidaLayout.createSequentialGroup()
+                        .addGap(377, 377, 377)
+                        .addComponent(lblTitulo)))
+                .addContainerGap(375, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscarPartidaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
         BuscarPartidaLayout.setVerticalGroup(
             BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BuscarPartidaLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(80, 80, 80)
-                .addGroup(BuscarPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(526, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(btnCrearPartida)
+                .addGap(61, 61, 61)
+                .addComponent(btnBuscarPartida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(BuscarPartida, "card3");
@@ -885,7 +936,7 @@ public class Juego extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPartidaActionPerformed
         // TODO add your handling code here:
         Server server;
         server = new Server(this);
@@ -894,7 +945,7 @@ public class Juego extends javax.swing.JFrame {
         
         cardLayout = (CardLayout) (getContentPane().getLayout());
         cardLayout.show(getContentPane(), "card6");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCrearPartidaActionPerformed
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         // TODO add your handling code here:
@@ -1000,13 +1051,13 @@ public class Juego extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SeleccionarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBuscarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPartidaActionPerformed
         // TODO add your handling code here:
         cliente = new Client(this, nombreCivilización);
         
         cardLayout = (CardLayout) (getContentPane().getLayout());
         cardLayout.show(getContentPane(), "card6");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBuscarPartidaActionPerformed
 
     private void listoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoActionPerformed
         // TODO add your handling code here:
@@ -1023,6 +1074,35 @@ public class Juego extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al enviar estado de 'listo' al servidor.");
         }
     }//GEN-LAST:event_listoActionPerformed
+
+    private void btnCrearPartidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearPartidaMouseEntered
+       btnCrearPartida.setBackground(new Color(10, 110, 19));
+    }//GEN-LAST:event_btnCrearPartidaMouseEntered
+
+    private void btnCrearPartidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearPartidaMouseExited
+       btnCrearPartida.setBackground(new Color(6,71,12));
+    }//GEN-LAST:event_btnCrearPartidaMouseExited
+
+    private void btnBuscarPartidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarPartidaMouseEntered
+       btnBuscarPartida.setBackground(new Color(10, 110, 19));
+
+    }//GEN-LAST:event_btnBuscarPartidaMouseEntered
+
+    private void btnBuscarPartidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarPartidaMouseExited
+      btnBuscarPartida.setBackground(new Color(6,71,12));
+
+    }//GEN-LAST:event_btnBuscarPartidaMouseExited
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+        lblTitulo.setForeground(new Color(204, 27, 133));
+        lblTitulo.setAlignmentX(CENTER_ALIGNMENT);
+        lblTitulo.setText("MAICOL INUTIL");
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+        lblTitulo.setForeground(new Color(15,68,89));
+        lblTitulo.setText("OCEANIA");
+    }//GEN-LAST:event_jPanel1MouseExited
 
     /**
      * @param args the command line arguments
@@ -1064,15 +1144,14 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel SeleccionLuchadores;
     private javax.swing.JButton Seleccionar;
     private javax.swing.JPanel TableroJuego;
+    private javax.swing.JButton btnBuscarPartida;
+    private javax.swing.JButton btnCrearPartida;
     private javax.swing.JTextField consola;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpanelP1;
@@ -1084,6 +1163,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel lblDestruidasP1;
     private javax.swing.JLabel lblDestruidasP2;
     private javax.swing.JLabel lblDestruidasP3;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblVidaTotal;
     private javax.swing.JLabel lblcasillasDestruidas;
     private javax.swing.JLabel lblnombreP1;
