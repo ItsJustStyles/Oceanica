@@ -48,6 +48,7 @@ public class Juego extends javax.swing.JFrame {
     private Tablero tablero;
     private String nombreCivilización;
     Client cliente;
+    realizarAtaquePorGrupo attack;
     
     private CardLayout cardLayout = new CardLayout();
     
@@ -240,6 +241,8 @@ public class Juego extends javax.swing.JFrame {
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
         
+        jScrollPane3.getViewport().setOpaque(false);
+        
         JPanelImage miImagen = new JPanelImage(Menu,"/imagenes/fondoMenu.jpg");
         Menu.add(miImagen).repaint();
         JPanelImage miImagen2 = new JPanelImage(luchadores, "/imagenes/marcoPersonajes.png");
@@ -290,11 +293,13 @@ public class Juego extends javax.swing.JFrame {
         }
     }
     
-    public void recibirAtaqueCliente(){
-        ReleaseTheKraken ataque1 = new ReleaseTheKraken(100, tablero);
-        ataque1.release_the_kraken();
-        vidaTropas();
-        this.repaint();
+    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna){
+        if(attack.atacar(personaje, ataque, fila, columna)){
+            vidaTropas();
+            this.repaint();
+            return true;
+        }
+        return false;
     }
     
     
@@ -494,7 +499,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(btnCrearPartida)
                 .addGap(61, 61, 61)
                 .addComponent(btnBuscarPartida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -568,7 +573,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(40, 40, 40)
                 .addComponent(luchadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(Seleccionar)
                 .addContainerGap())
         );
@@ -586,8 +591,11 @@ public class Juego extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bitácora");
 
+        jScrollPane3.setOpaque(false);
+
         bitacoraScroll.setColumns(20);
         bitacoraScroll.setRows(5);
+        bitacoraScroll.setOpaque(false);
         jScrollPane3.setViewportView(bitacoraScroll);
 
         javax.swing.GroupLayout panelBitacoraLayout = new javax.swing.GroupLayout(panelBitacora);
@@ -933,7 +941,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jugadoresListos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
                 .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -991,6 +999,8 @@ public class Juego extends javax.swing.JFrame {
             TableroJuego.add(jpanel, java.awt.BorderLayout.CENTER);
             TableroJuego.revalidate();
             TableroJuego.repaint();
+            
+            attack = new realizarAtaquePorGrupo(tablero, todosLosPersonajes);
             
             
             

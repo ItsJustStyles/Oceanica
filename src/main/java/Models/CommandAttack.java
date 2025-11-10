@@ -13,24 +13,64 @@ import Servidor.ThreadServidor;
  * @author diego
  */
 public class CommandAttack extends Command{
-
+    CommandHit hitCommand;
+    
+    String row;
+    String columna;
+    
+    //2 par de putos más pára el ataque de Three lines xd
+    String row2;
+    String columna2;
+    
+    String row3;
+    String columna3;
+    
     public CommandAttack(String[] args) { //ATTACK Andres 5 7
-        super(CommandType.ATTACK, args);
+        super(CommandType.ATAQUE, args);
     }
     
     @Override
     public void processForServer(ThreadServidor threadServidor) {
         String[] params = this.getParameters();
         
-        String objetivo = params[1];
-        String row = params[2];
-        String columna = params[3];
-        System.out.println(objetivo);
+        String p;
+        String ataque;
+        String objetivo;
+        try{
+            p = params[1];
+            ataque = params[2];
+            objetivo = params[3];
+
+            if(ataque.equals("KrakenBreath")){
+                row = params[4];
+                columna = params[5];
+            }else if(ataque.equals("ThreeLines")){
+                row = params[4];
+                columna = params[5];
+
+                row2 = params[6];
+                columna2 = params[7];
+
+                row3 = params[8];
+                columna3 = params[9];
+            }else{
+                row = "0";
+                columna = "0";
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Parametros para el ataque imcompletos");
+            this.setIsBroadcast(false);
+            return;
+        }
+        
+        
+        //System.out.println(objetivo);
+        
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(objetivo);
         if(targetThread != null){
             
             String attackerName = threadServidor.name;
-            Command hitCommand = new CommandHit(attackerName, row, columna);
+            hitCommand = new CommandHit(p, ataque, attackerName, row, columna);
             // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
             try {
                 targetThread.objectSender.writeObject(hitCommand);
@@ -39,7 +79,7 @@ public class CommandAttack extends Command{
                 // Manejar la desconexión del objetivo
                 threadServidor.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
             }
-            String[] broadcastParams = new String[]{threadServidor.name, objetivo, row, columna};
+            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna};
             CommandAttack broadcastCommand = new CommandAttack(broadcastParams);
             
             // Reenviar a todos (BROADCAST)
@@ -55,12 +95,21 @@ public class CommandAttack extends Command{
     public void processInClient(Client client) {
         String[] params = this.getParameters();
         String attackerName = params[0];
-        String targetName = params[1]; 
-        String row = params[2]; 
-        String col = params[3];
+        String targetName = params[1];
+        String ataque = params[2];
+        String row = params[3]; 
+        String col = params[4];
         
-        String bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName + " en fila: " + row + " y columna: " + col;
-        if(!client.name.equals(targetName)){
+        //Escribir el mensaje dependiendo del ataque xd
+        String bitacora;
+        if(ataque.equals("KrakenBreath")){
+            bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName + " en fila: " + row + " y columna: " + col;
+        }else{
+            bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName;
+        }
+        
+        
+        if(!client.name.equals(targetName) && hitCommand.isExito()){
             client.getRefFrame().writeBitacora(bitacora);
         }
         

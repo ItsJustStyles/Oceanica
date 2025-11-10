@@ -21,7 +21,7 @@ public class CommandFactory {
         String type = args[0].toUpperCase();
         
         switch (type) {
-            case "ATTACK":
+            case "ATAQUE":
                 return new CommandAttack(args);
             case "MESSAGE":
                 return new CommandMessage(args);

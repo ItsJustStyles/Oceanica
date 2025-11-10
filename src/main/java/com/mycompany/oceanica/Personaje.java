@@ -18,6 +18,7 @@ public class Personaje {
     private int poder;
     private int resistencia;
     private int sanidad;
+    private String nombreSecundario;
 
     public String getNombre() {
         return nombre;
@@ -47,10 +48,8 @@ public class Personaje {
         return sanidad;
     }
 
-
-    
-
-
-    
-    
+    public String getNombreSecundario(){
+        return nombreSecundario;
+    }
+ 
 }

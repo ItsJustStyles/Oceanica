@@ -14,7 +14,7 @@ package Models;
  * @author diego
  */
 public enum CommandType {
-    ATTACK(4),              // attack Andres 4 5
+    ATAQUE(5),              // attack Andres 4 5
     MESSAGE(2),             // message hola a todos
     PRIVATE_MESSAGE(3),     // private Andres hola andres
     GIVEUP(1),              // giveup
