@@ -58,6 +58,20 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                 }
+            case "Fish Telepathy":
+                FishTelepathy attack3 = new FishTelepathy(50, tablero);
+                if(ataqueSolicitado.equals("Cardumen")){
+                    attack3.Cardumen();
+                    return true;
+                }else if(ataqueSolicitado.equals("SharkAttack")){
+                    attack3.Shark_attack();
+                    return true;
+                }else if(ataqueSolicitado.equals("Pulp")){
+                    attack3.Pulp();
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           
