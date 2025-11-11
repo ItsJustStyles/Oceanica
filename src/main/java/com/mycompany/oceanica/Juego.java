@@ -293,8 +293,8 @@ public class Juego extends javax.swing.JFrame {
         }
     }
     
-    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna){
-        if(attack.atacar(personaje, ataque, fila, columna)){
+    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
+        if(attack.atacar(personaje, ataque, fila, columna, fila2, columna2, fila3, columna3)){
             vidaTropas();
             this.repaint();
             return true;

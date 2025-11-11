@@ -20,20 +20,20 @@ public class realizarAtaquePorGrupo {
         this.todosLosPersonajes = todosLosPersonajes;
     }
     
-    public boolean atacar(String p, String ataque, int fila, int columna){
+    public boolean atacar(String p, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
         String GrupoAtaque = buscarPersonaje(p);
         if(GrupoAtaque == null){
             System.out.println("Personaje no valido");
             return false;
         }
-        boolean exito = buscarAtaque(GrupoAtaque, ataque, fila, columna);
+        boolean exito = buscarAtaque(GrupoAtaque, ataque, fila, columna, fila2, columna2, fila3, columna3);
         if(exito){
             return true;
         }
         return false;
     }
     
-    public boolean buscarAtaque(String ataque, String ataqueSolicitado, int fila, int columna){
+    public boolean buscarAtaque(String ataque, String ataqueSolicitado, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
         switch(ataque){
             case "Release the Kraken":
                 ReleaseTheKraken attack = new ReleaseTheKraken(100, tablero);
@@ -49,7 +49,15 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                     //System.out.println("No hay ataque con ese nombre");
-                }  
+                }
+            case "Poseidon Trident":
+                PoseidonTrident attack2 = new PoseidonTrident(100, tablero);
+                if(ataqueSolicitado.equals("ThreeLines")){
+                    attack2.ThreeLines(fila, columna, fila2, columna2, fila3, columna3);
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           

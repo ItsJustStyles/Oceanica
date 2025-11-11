@@ -36,6 +36,13 @@ public class CommandAttack extends Command{
         String p;
         String ataque;
         String objetivo;
+        boolean exitoAttack;
+        
+        row2 = "0";
+        columna2 = "0";
+
+        row3 = "0";
+        columna3 = "0";
         try{
             p = params[1];
             ataque = params[2];
@@ -70,7 +77,7 @@ public class CommandAttack extends Command{
         if(targetThread != null){
             
             String attackerName = threadServidor.name;
-            hitCommand = new CommandHit(p, ataque, attackerName, row, columna);
+            hitCommand = new CommandHit(p, ataque, attackerName, row, columna, row2, columna2, row3, columna3);
             // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
             try {
                 targetThread.objectSender.writeObject(hitCommand);
@@ -79,7 +86,9 @@ public class CommandAttack extends Command{
                 // Manejar la desconexión del objetivo
                 threadServidor.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
             }
-            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna};
+            exitoAttack = hitCommand.isExito();
+            String exito = String.valueOf(!exitoAttack);
+            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna, row2, columna2, row3, columna3, exito};
             CommandAttack broadcastCommand = new CommandAttack(broadcastParams);
             
             // Reenviar a todos (BROADCAST)
@@ -100,16 +109,30 @@ public class CommandAttack extends Command{
         String row = params[3]; 
         String col = params[4];
         
+        String row2 = params[5]; 
+        String col2 = params[6];
+        String row3 = params[7]; 
+        String col3 = params[8];
+        
+        String exitoAtaque = params[9];
+        System.out.println(exitoAtaque);                            
+        
+        
+        
         //Escribir el mensaje dependiendo del ataque xd
         String bitacora;
         if(ataque.equals("KrakenBreath")){
             bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName + " en fila: " + row + " y columna: " + col;
+        }else if(ataque.equals("ThreeLines")){
+            bitacora = "El jugador " + attackerName + " atacó al jugador " + " en los puntos: " +
+    "(" + row + ", " + col + "), " + 
+    "(" + row2 + ", " + col2 + "), " + 
+    "(" + row3 + ", " + col3 + ")";
         }else{
             bitacora = "El jugador " + attackerName + " atacó al jugador " + targetName;
         }
-        
-        
-        if(!client.name.equals(targetName) && hitCommand.isExito()){
+
+        if(!client.name.equals(targetName) && exitoAtaque.equals("true")){
             client.getRefFrame().writeBitacora(bitacora);
         }
         
