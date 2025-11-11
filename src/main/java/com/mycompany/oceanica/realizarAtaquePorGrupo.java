@@ -72,6 +72,20 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                 }
+            case "Thunders under the sea":
+                ThundersUnderTheSea attack4 = new ThundersUnderTheSea(100, tablero);
+                if(ataqueSolicitado.equals("ThunderRain")){
+                    attack4.Thunder_rain();
+                    return true;
+                }else if(ataqueSolicitado.equals("PoseidonThunders")){
+                    attack4.Poseidon_thunders();
+                    return true;
+                }else if(ataqueSolicitado.equals("EelAttack")){
+                    attack4.Eel_attack();
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           
