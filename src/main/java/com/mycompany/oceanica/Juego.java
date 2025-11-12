@@ -65,7 +65,7 @@ public class Juego extends javax.swing.JFrame {
     
     public Juego() throws IOException {
         initComponents();
-        setResizable(false);
+        //setResizable(false);
         consola.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 handleCommandInput(evt);
