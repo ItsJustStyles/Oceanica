@@ -1074,7 +1074,7 @@ public class Juego extends javax.swing.JFrame {
                 
                 
             } 
-            
+                       
             vidaTropas();
             
             cardLayout = (CardLayout) (getContentPane().getLayout());

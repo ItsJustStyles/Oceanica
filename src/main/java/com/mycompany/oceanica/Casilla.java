@@ -57,13 +57,12 @@ public class Casilla {
         x.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
         x.setForeground(java.awt.Color.WHITE);
         
-        panel.add(x, BorderLayout.CENTER);
-        panel.revalidate();
-        panel.repaint();
-        
         x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         x.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
         
+        panel.add(x, BorderLayout.CENTER);
+        panel.revalidate();
+        panel.repaint(); 
     }
     
 }

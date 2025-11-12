@@ -17,6 +17,7 @@ public class WavesControl extends Ataque {
      private final Random random = new Random();
      private final List<Remolino> remolinos = new ArrayList<>();
      private final List<Casilla> casillasRadioactivas = new ArrayList<>();
+     Juego refFrame;
 
     
 
@@ -58,23 +59,17 @@ public class WavesControl extends Ataque {
         if (casillasRadioactivas.isEmpty()) return;
 
         int segundos = random.nextInt(10) + 1; 
-
-        new Thread(() -> {
-            try {
-                for (int i = 0; i < segundos; i++) {
-                    for (Casilla c : casillasRadioactivas) {
-                        tablero.recibirDanoLocacion(c.getX(), c.getY(), 10);
-                    }
-                    Thread.sleep(1000); 
-                }
-            } catch (InterruptedException ignored) {}
-        }).start();
+        
+        for (Casilla c : casillasRadioactivas) {
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10*segundos);
+            
+        }
     }
 
     
     public Casilla casillaRandom(){
-        int x = random.nextInt(30);
-        int y = random.nextInt(20);
+        int x = random.nextInt(20);
+        int y = random.nextInt(30);
         return tablero.CasillaPorCords(x, y);
     }
     

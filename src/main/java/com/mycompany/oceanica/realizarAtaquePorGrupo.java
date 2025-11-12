@@ -86,6 +86,20 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                 }
+            case "Waves control":
+                WavesControl attack5 = new WavesControl(100, tablero);
+                if(ataqueSolicitado.equals("SwirlRaising")){
+                    attack5.SwirlRaising();
+                    return true;
+                }else if(ataqueSolicitado.equals("SendHumanGarbage")){
+                    attack5.sendHumanGarbage();
+                    return true;
+                }else if(ataqueSolicitado.equals("RadioactiveRush")){
+                    attack5.radioactiveRush();
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           
