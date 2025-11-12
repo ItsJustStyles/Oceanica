@@ -1,0 +1,105 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.oceanica;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ *
+ * @author gabos
+ */
+public class WavesControl extends Ataque {
+    
+     private final Random random = new Random();
+     private final List<Remolino> remolinos = new ArrayList<>();
+     private final List<Casilla> casillasRadioactivas = new ArrayList<>();
+
+    
+
+    public WavesControl(int dano, Tablero tablero) {
+        super(dano, tablero);
+    }
+
+    @Override
+    public void aplicarDano(Casilla celda) {
+    }
+    
+    public void SwirlRaising(){
+        Casilla casilla = casillaRandom();
+        int radio = random.nextInt(9) + 2;
+        Remolino r = new Remolino(casilla.getX(),casilla.getY(),radio,true);
+        remolinos.add(r);
+        danoArea(casilla,radio);
+                
+    }
+    public void sendHumanGarbage() {
+        if (remolinos.isEmpty()) return;
+
+        Remolino r = remolinos.get(random.nextInt(remolinos.size()));
+        int toneladas = 10 * r.getRadio();
+
+        for (int i = 0; i < toneladas; i++) {
+            Casilla destino = tablero.casillas.get(random.nextInt(tablero.casillas.size()));
+
+            tablero.recibirDanoLocacion(destino.getX(), destino.getY(), 25);
+
+            if (random.nextBoolean()) {
+                synchronized (casillasRadioactivas) {
+                    casillasRadioactivas.add(destino); //50 porciento de probabilidad de ser radioactiva 
+                }
+            }
+        }
+    }
+    public void radioactiveRush() {
+        if (casillasRadioactivas.isEmpty()) return;
+
+        int segundos = random.nextInt(10) + 1; 
+
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < segundos; i++) {
+                    for (Casilla c : casillasRadioactivas) {
+                        tablero.recibirDanoLocacion(c.getX(), c.getY(), 10);
+                    }
+                    Thread.sleep(1000); 
+                }
+            } catch (InterruptedException ignored) {}
+        }).start();
+    }
+
+    
+    public Casilla casillaRandom(){
+        int x = random.nextInt(30);
+        int y = random.nextInt(20);
+        return tablero.CasillaPorCords(x, y);
+    }
+    
+    
+    public void danoArea(Casilla celda,int rango){
+        int filaInicial = celda.getX();
+        int columnaInicial = celda.getY();
+        final int MAX_FILAS = 20;
+        final int MAX_COLUMNAS = 30;
+        
+        
+        for(int fila = filaInicial - rango; fila <= filaInicial + rango; fila++){
+            for(int columna = columnaInicial - rango; columna <= columnaInicial + rango; columna++){
+                if(fila == filaInicial && columna == columnaInicial){
+                    continue;
+                }
+                
+                boolean filaValida = (fila >= 0 && fila <= MAX_FILAS);
+                boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
+                
+                if(filaValida && columnaValida){
+                    tablero.recibirDanoLocacion(fila, columna, dano);
+                }
+            }
+        }
+    }
+    
+}
