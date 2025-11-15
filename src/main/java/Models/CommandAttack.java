@@ -6,6 +6,7 @@ package Models;
 
 import Cliente.Client;
 import Models.CommandType;
+import Servidor.Server;
 import Servidor.ThreadServidor;
 
 /**
@@ -31,6 +32,29 @@ public class CommandAttack extends Command{
     
     @Override
     public void processForServer(ThreadServidor threadServidor) {
+        // =============================================================
+        // VALIDAR TURNO DEL JUGADOR
+        // =============================================================
+        Server server = threadServidor.getRefServer();
+
+        if (server.turnSystemEnabled) {
+            ThreadServidor jugadorActual = server.getCurrentTurnPlayer();
+
+            if (jugadorActual != threadServidor) {
+                // NO ES SU TURNO → rechazo del ataque
+                System.out.println("NO ES TU TURNO");
+                try {
+                    threadServidor.objectSender.writeObject(
+                        new CommandMessage(new String[]{
+                            "SERVER", "NO ES TU TURNO"
+                        })
+                    );
+                } catch (Exception e) {}
+
+                return; // NO permitir que haga el ataque
+            }
+        }
+        
         String[] params = this.getParameters();
         
         String p;
@@ -96,7 +120,13 @@ public class CommandAttack extends Command{
             //this.setIsBroadcast(true);
         }else{
             this.setIsBroadcast(false);
+            return;
         }
+        
+        // =============================================================
+        // AVANZAR TURNO DESPUÉS REALIZAR EL ATAQUE
+        // =============================================================
+        server.avanzarTurno();
         
     }
 

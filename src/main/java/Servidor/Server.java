@@ -5,12 +5,15 @@
 package Servidor;
 import Models.CommandStartGame;
 import Models.Command;
+import Models.CommandMessage;
+import Models.CommandTurn;
 import Models.lobbyUpdateCommand;
 import com.mycompany.oceanica.Juego;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +26,12 @@ import java.util.Set;
  * @author diego
  */
 public class Server {
+    // ---- SISTEMA DE TURNOS ----
+    private List<ThreadServidor> turnOrder = new ArrayList<>();
+    private int currentTurnIndex = 0;
+    private int attacksThisRound = 0;
+    public boolean turnSystemEnabled = false;
+    
     private final int PORT = 35500;
     private final int maxConections = 4;
     private ServerSocket serverSocket;
@@ -57,6 +66,7 @@ public class Server {
         if (readyPlayers.size() >= 1) { // mínimo 2 jugadores listos
             System.out.println("Mínimo de jugadores listos alcanzado. Iniciando partida...");
             broadcast(new CommandStartGame());
+            iniciarTurnos();
         }
 }
     
@@ -137,5 +147,56 @@ public class Server {
         }
         return null; 
     }
+    
+    // ======================= SISTEMA DE TURNOS ==========================
+
+    public void iniciarTurnos() {
+        turnOrder = new ArrayList<>(connectedClients);
+
+        Collections.shuffle(turnOrder); // Orden aleatorio de ronda
+
+        currentTurnIndex = 0;
+        attacksThisRound = 0;
+        turnSystemEnabled = true;
+
+        anunciarTurnoActual();
+    }
+
+    private void anunciarTurnoActual() {
+        ThreadServidor jugador = turnOrder.get(currentTurnIndex);
+
+        // Enviar un comando TURN a todos los clientes
+        CommandTurn turnoCommand = new CommandTurn(jugador.name);
+
+        broadcast(turnoCommand);
+}
+
+
+    public ThreadServidor getCurrentTurnPlayer() {
+        return turnOrder.get(currentTurnIndex);
+    }
+
+    public void avanzarTurno() {
+        attacksThisRound++;
+
+        // ¿Se acabó la ronda completa?
+        if (attacksThisRound >= turnOrder.size()) {
+
+            Collections.shuffle(turnOrder); // Nuevo orden aleatorio
+            attacksThisRound = 0;
+            currentTurnIndex = 0;
+
+            broadcast(new CommandMessage(
+                    new String[]{"SERVER", "Nueva ronda iniciada"}
+            ));
+
+        } else {
+            currentTurnIndex++;
+        }
+
+        anunciarTurnoActual();
+}
+
+// ===================================================================
   
 }
