@@ -31,4 +31,23 @@ public class EstoyCodificando extends Ataque{
         
     }
     
+    public void EstoNoEsUnJuego(){
+        for(Casilla c : tablero.casillas){
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10);
+        }
+        String rutaSonido = "/sonidos/EstoNoEsUnJuego.wav";
+        try{
+        
+            ReproductorSonido reproductor = new ReproductorSonido(rutaSonido);
+            reproductor.reproducir();
+            reproductor.detener();
+            
+        }catch(Exception e){
+            
+            System.err.println("Ocurrió un error al reproducir el sonido:");
+            e.printStackTrace();
+            
+        }
+    }
+    
 }
