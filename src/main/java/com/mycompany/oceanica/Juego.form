@@ -34,8 +34,11 @@
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Cursor Por defecto"/>
         </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1350, 800]"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1022, 667]"/>
+          <Dimension value="[1350, 800]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -48,13 +51,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="463" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="627" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Salir" min="-2" pref="96" max="-2" attributes="0"/>
                       <Component id="Jugar" min="-2" pref="96" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="463" max="32767" attributes="0"/>
+                  <EmptySpace pref="627" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,10 +113,10 @@
     <Container class="javax.swing.JPanel" name="BuscarPartida">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1022, 667]"/>
+          <Dimension value="[1350, 800]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1022, 667]"/>
+          <Dimension value="[1350, 800]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -126,12 +129,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="450" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="614" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnBuscarPartida" min="-2" pref="122" max="-2" attributes="0"/>
                       <Component id="btnCrearPartida" min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="450" max="32767" attributes="0"/>
+                  <EmptySpace pref="614" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -148,9 +151,9 @@
                   <Component id="lblTitulo" min="-2" pref="163" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="btnCrearPartida" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="btnBuscarPartida" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="238" max="32767" attributes="0"/>
+                  <EmptySpace pref="299" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
@@ -229,8 +232,11 @@
     </Container>
     <Container class="javax.swing.JPanel" name="SeleccionLuchadores">
       <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1350, 800]"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1022, 667]"/>
+          <Dimension value="[1350, 800]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -243,20 +249,16 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
-                          <Component id="luchadores" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="404" max="-2" attributes="0"/>
-                          <Component id="Seleccionar" max="32767" attributes="0"/>
-                          <EmptySpace min="216" pref="216" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                  <Component id="luchadores" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
               </Group>
               <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="556" max="-2" attributes="0"/>
+                  <Component id="Seleccionar" min="-2" pref="238" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -266,7 +268,7 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="luchadores" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="73" max="32767" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Component id="Seleccionar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -293,8 +295,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="443" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="772" max="-2" attributes="0"/>
+                      <EmptySpace pref="77" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -302,7 +304,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="320" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="453" max="-2" attributes="0"/>
                       <EmptySpace pref="77" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -361,7 +363,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1022, 667]"/>
+          <Dimension value="[1370, 800]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -379,12 +381,12 @@
                       <Component id="panelResultados" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="TableroJuego" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="TableroJuego" pref="823" max="32767" attributes="0"/>
                       <Component id="panelVidaTropas" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="personajes" min="-2" max="-2" attributes="0"/>
+                  <Component id="personajes" pref="249" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Component id="panelCoords" alignment="0" max="32767" attributes="0"/>
@@ -394,20 +396,23 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="panelBitacora" min="-2" pref="267" max="-2" attributes="0"/>
+                          <Component id="panelBitacora" min="-2" pref="313" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="panelResultados" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelResultados" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="TableroJuego" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="TableroJuego" min="-2" pref="499" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelVidaTropas" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="personajes" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="personajes" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelConsola" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="panelCoords" min="-2" max="-2" attributes="0"/>
@@ -450,7 +455,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="220" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="266" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -516,7 +521,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="resultadosScroll" pref="242" max="32767" attributes="0"/>
+                      <Component id="resultadosScroll" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -576,17 +582,20 @@
                 </LineBorder>
               </Border>
             </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[700, 310]"/>
+            </Property>
           </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="610" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="489" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -606,22 +615,19 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jpanelP1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVidaTotal" min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                      <Component id="jpanelP2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="150" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lblcasillasDestruidas" min="-2" pref="205" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
-                              <Component id="jpanelP2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="lblcasillasDestruidas" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="jpanelP3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="335" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -634,13 +640,13 @@
                           <Component id="lblVidaTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblcasillasDestruidas" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jpanelP1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jpanelP2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jpanelP3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpanelP2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpanelP1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpanelP3" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -23,7 +23,9 @@ public enum CommandType {
     START_GAME(0),          // nuevo comando: iniciar juego
     LOBBY(0),
     HIT(0),
-    TEAM(2);
+    TEAM(2),
+    PORCENTAJECELDAS(1),
+    UNICAST(1);
 
     private final int requiredParameters;
 

@@ -31,6 +31,8 @@ public class CommandFactory {
                 return new CommandGiveup(args);
             case "NAME":
                 return new CommandName(args);
+            case "MOSTRARPORCENTAJECELDAS":
+                return new CommandPorcentajeCeldas(args);
             default:
                 return null;
         }

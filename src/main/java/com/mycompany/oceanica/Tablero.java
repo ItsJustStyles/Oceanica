@@ -208,4 +208,11 @@ public class Tablero{
       
     }
     
+    public void vidaCasillas(){
+        for(Casilla c : casillas){
+            c.ponerVida();
+        }
+    }
+    
+    
 }
