@@ -8,6 +8,8 @@ import Cliente.Client;
 import Models.CommandType;
 import Servidor.Server;
 import Servidor.ThreadServidor;
+import com.mycompany.oceanica.Personaje;
+import java.util.List;
 
 /**
  *
@@ -101,6 +103,15 @@ public class CommandAttack extends Command{
         if(targetThread != null){
             
             String attackerName = threadServidor.name;
+            //Verificar si el personaje con el que se ataca es valido para los que se seleccionaron por el jugador
+            
+            boolean personajeValido = threadServidor.esPersonajeValido(p);
+            if(!personajeValido){
+                System.out.println("El personaje no es valido");
+                this.setIsBroadcast(false);
+                return;
+            }
+            
             hitCommand = new CommandHit(p, ataque, attackerName, row, columna, row2, columna2, row3, columna3);
             // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
             try {

@@ -22,7 +22,8 @@ public enum CommandType {
     READY(1),               // nuevo comando: jugador listo
     START_GAME(0),          // nuevo comando: iniciar juego
     LOBBY(0),
-    HIT(0);
+    HIT(0),
+    TEAM(2);
 
     private final int requiredParameters;
 

@@ -13,10 +13,12 @@ import java.util.List;
 public class realizarAtaquePorGrupo {
     
     Tablero tablero;
+    Juego refFrame;
     List<Personaje> todosLosPersonajes;
     
-    public realizarAtaquePorGrupo(Tablero tablero, List<Personaje> todosLosPersonajes) {
+    public realizarAtaquePorGrupo(Tablero tablero, List<Personaje> todosLosPersonajes, Juego refFrame) {
         this.tablero = tablero;
+        this.refFrame = refFrame;
         this.todosLosPersonajes = todosLosPersonajes;
     }
     
@@ -96,6 +98,23 @@ public class realizarAtaquePorGrupo {
                     return true;
                 }else if(ataqueSolicitado.equals("RadioactiveRush")){
                     attack5.radioactiveRush();
+                    return true;
+                }else{
+                    return false;
+                }
+            case "Estoy codificando":
+                EstoyCodificando attack6 = new EstoyCodificando(100, tablero, refFrame);
+                if(ataqueSolicitado.equals("EstoNoEsUnJuego")){
+                    attack6.EstoNoEsUnJuego();
+                    return true;
+                }else if(ataqueSolicitado.equals("NoSePuedeMas")){
+                    attack6.NoSePuedeMas();
+                    return true;
+                }else if(ataqueSolicitado.equals("MicroprocesadorX264")){
+                    attack6.Microprocesador_x264();
+                    return true;
+                }else if(ataqueSolicitado.equals("Slower")){
+                    attack6.Slower();
                     return true;
                 }else{
                     return false;

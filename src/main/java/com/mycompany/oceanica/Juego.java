@@ -62,9 +62,13 @@ public class Juego extends javax.swing.JFrame {
     private final Border BORDE_NORMAL = BorderFactory.createEmptyBorder();
     private JPanelImage miImagen5;
     
+    public SonidoMenu menuPersonajes = new SonidoMenu("/sonidos/MaMeilleureEnnemie8bits.wav");
+    
     
     public Juego() throws IOException {
         initComponents();
+        menuPersonajes.loop();
+        
         //setResizable(false);
         consola.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
@@ -81,7 +85,7 @@ public class Juego extends javax.swing.JFrame {
         cargarPersonajesEnScrollPanel();
         
     }
-
+ 
     private void cargarPersonajesEnScrollPanel(){
         try {
             for (Personaje p : this.todosLosPersonajes) {
@@ -973,7 +977,7 @@ public class Juego extends javax.swing.JFrame {
         Server server;
         server = new Server(this);
         
-        cliente = new Client(this, nombreCivilización);
+        cliente = new Client(this, nombreCivilización, heroesElegidos);
         
         cardLayout = (CardLayout) (getContentPane().getLayout());
         cardLayout.show(getContentPane(), "card6");
@@ -1000,7 +1004,7 @@ public class Juego extends javax.swing.JFrame {
             TableroJuego.revalidate();
             TableroJuego.repaint();
             
-            attack = new realizarAtaquePorGrupo(tablero, todosLosPersonajes);
+            attack = new realizarAtaquePorGrupo(tablero, todosLosPersonajes, this);
             
             
             
@@ -1077,6 +1081,7 @@ public class Juego extends javax.swing.JFrame {
                        
             vidaTropas();
             
+            //menuPersonajes.stop();
             cardLayout = (CardLayout) (getContentPane().getLayout());
             cardLayout.show(getContentPane(), "card3");
             
@@ -1087,7 +1092,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void btnBuscarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPartidaActionPerformed
         // TODO add your handling code here:
-        cliente = new Client(this, nombreCivilización);
+        cliente = new Client(this, nombreCivilización, heroesElegidos);
         
         cardLayout = (CardLayout) (getContentPane().getLayout());
         cardLayout.show(getContentPane(), "card6");

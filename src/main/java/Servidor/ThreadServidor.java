@@ -1,10 +1,12 @@
 package Servidor;
 
 import Models.Command;
+import com.mycompany.oceanica.Personaje;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 /**
  *
@@ -18,6 +20,7 @@ public class ThreadServidor extends Thread {
     public ObjectInputStream objectListener;
     public ObjectOutputStream objectSender;
     public String name;
+    public List<Personaje> heroes;
 
     public boolean isActive = true;
     public boolean isRunning = true;
@@ -64,6 +67,14 @@ public class ThreadServidor extends Thread {
     public void showAllClients() {
         this.server.showAllNames();
     }
-    
+        
+    public boolean esPersonajeValido(String nombrePersonaje) {
+        for (Personaje heroe : heroes) {
+            if (heroe.getNombre().equals(nombrePersonaje) || heroe.getNombreSecundario().equals(nombrePersonaje)) {
+                return true; 
+            }
+        }
+        return false;
+    }
     
 }

@@ -9,8 +9,9 @@ package com.mycompany.oceanica;
  * @author lacay
  */
 public class EstoyCodificando extends Ataque{
-
-    public EstoyCodificando(int dano, Tablero tablero) {
+    Juego refFrame;
+    public EstoyCodificando(int dano, Tablero tablero, Juego refFrame) {
+        this.refFrame = refFrame;
         super(dano, tablero);
     }
 
@@ -20,34 +21,26 @@ public class EstoyCodificando extends Ataque{
     }
     
     public void Microprocesador_x264(){
-        
+        ReproductorSonido sonido = new ReproductorSonido("/sonidos/Microprocesador.wav", refFrame);
+        sonido.play();
     }
     
     public void Slower(){
-        
+        ReproductorSonido sonido = new ReproductorSonido("/sonidos/Slower.wav", refFrame);
+        sonido.play();
     }
     
     public void NoSePuedeMas(){
-        
+        ReproductorSonido sonido = new ReproductorSonido("/sonidos/NoSePuedeMas.wav", refFrame);
+        sonido.play();
     }
     
     public void EstoNoEsUnJuego(){
         for(Casilla c : tablero.casillas){
             tablero.recibirDanoLocacion(c.getX(), c.getY(), 10);
         }
-        String rutaSonido = "/sonidos/EstoNoEsUnJuego.wav";
-        try{
-        
-            ReproductorSonido reproductor = new ReproductorSonido(rutaSonido);
-            reproductor.reproducir();
-            reproductor.detener();
-            
-        }catch(Exception e){
-            
-            System.err.println("Ocurrió un error al reproducir el sonido:");
-            e.printStackTrace();
-            
-        }
+        ReproductorSonido sonido = new ReproductorSonido("/sonidos/EstoNoEsUnJuego.wav", refFrame);
+        sonido.play();
     }
     
 }

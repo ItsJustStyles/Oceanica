@@ -5,13 +5,16 @@
 package Cliente;
 
 import Models.CommandFactory;
+import Models.CommandTeam;
 import com.mycompany.oceanica.Juego;
+import com.mycompany.oceanica.Personaje;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,10 +32,12 @@ public class Client {
     private ThreadClient threadClient;
     
     public String name;
+    List<Personaje> heroes;
 
-    public Client(Juego refFrame, String name) {
+    public Client(Juego refFrame, String name, List<Personaje> heroes) {
         this.refFrame = refFrame;
         this.name = name;
+        this.heroes = heroes;
         this.connect();
         
     }
@@ -51,6 +56,11 @@ public class Client {
             //envía el nombre
             String args[] = {"NAME", this.name};
             objectSender.writeObject(CommandFactory.getCommand(args));
+            
+            //enviar los personajes seleccionados xd
+            CommandTeam comandoEquipo = new CommandTeam(this.heroes);
+            objectSender.writeObject(comandoEquipo);
+            objectSender.flush();
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

@@ -5,12 +5,16 @@
 package com.mycompany.oceanica;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  *
  * @author lacay
  */
-public class Personaje {
+public class Personaje implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private String nombre;
     private String icon;
     private String ataque;
