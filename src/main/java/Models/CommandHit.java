@@ -45,6 +45,7 @@ public class CommandHit extends Command{
         int columna3 = Integer.parseInt(col3);
         
         String mensaje;
+        String registro = "Se recibio un ataque del jugador " + attacker + " usando " + p + " con el ataque: " + ataque;
         if(ataque.equals("KrakenBreath")){
            mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque + " en fila: " + row + " y columna: " + col; 
         }else if(ataque.equals("ThreeLines")){
@@ -56,7 +57,7 @@ public class CommandHit extends Command{
            mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque; 
         }
         
-        if(client.getRefFrame().recibirAtaqueCliente(p, ataque, fila, columna, fila2, columna2, fila3, columna3)){
+        if(client.getRefFrame().recibirAtaqueCliente(p, ataque, fila, columna, fila2, columna2, fila3, columna3, registro)){
             client.getRefFrame().writeBitacora(mensaje);
             exito = true;
         }else{

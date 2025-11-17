@@ -10,15 +10,15 @@ import Servidor.ThreadServidor;
  *
  * @author lacay
  */
-public class CommandPorcentajeCeldas extends Command{
+public class CommandPintarVivas extends Command{
 
-    public CommandPorcentajeCeldas(String[] args) {
-        super(CommandType.PORCENTAJECELDAS, args);
+    public CommandPintarVivas(String[] args) {
+        super(CommandType.PINTARVIVAS, args);
     }
 
     @Override
     public void processForServer(ThreadServidor threadServidor) {
-        CommandUnicast comandoARealizar = new CommandUnicast("MOSTRARPORCENTAJECELDAS", "x", "y");
+        CommandUnicast comandoARealizar = new CommandUnicast("PINTARVIVAS", "x", "y");
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(threadServidor.name);
         try {
             targetThread.objectSender.writeObject(comandoARealizar);

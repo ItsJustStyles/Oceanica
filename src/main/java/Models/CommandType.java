@@ -25,6 +25,9 @@ public enum CommandType {
     HIT(0),
     TEAM(2),
     PORCENTAJECELDAS(1),
+    PINTARVIVAS(1),
+    MOSTRARCELDASOCUPADAS(1),
+    CONSULTARCELDA(3),
     UNICAST(1);
 
     private final int requiredParameters;

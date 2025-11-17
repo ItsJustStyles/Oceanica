@@ -57,7 +57,7 @@ public class Juego extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Juego.class.getName());
     
-    private Tablero tablero;
+    public Tablero tablero;
     private String nombreCivilización;
     Client cliente;
     private JDialog infoDialog;
@@ -318,8 +318,8 @@ public class Juego extends javax.swing.JFrame {
         }
     }
     
-    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
-        if(attack.atacar(personaje, ataque, fila, columna, fila2, columna2, fila3, columna3)){
+    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3, String registro){
+        if(attack.atacar(personaje, ataque, fila, columna, fila2, columna2, fila3, columna3, registro)){
             vidaTropas();
             this.repaint();
             return true;
@@ -327,8 +327,23 @@ public class Juego extends javax.swing.JFrame {
         return false;
     }
     
-    public void comandos(){
-        tablero.vidaCasillas();
+    public void comandos(String comando, int x, int y){
+        switch(comando){
+            case "MOSTRARPORCENTAJECELDAS":
+                tablero.vidaCasillas();
+                break;
+            case "PINTARVIVAS":
+                tablero.pintarVivasCasillas();
+                break;
+            case "MOSTRARCELDASOCUPADAS":
+                tablero.MostrarCasillasOcupadas();
+                break;
+            case "CONSULTARCELDA":
+                tablero.infoCasillas(x, y);
+            default:
+                break;
+        }
+        
     }
     
     private void mostrarPanelInformacion(Personaje heroe) {
@@ -1120,7 +1135,7 @@ public class Juego extends javax.swing.JFrame {
                 
             }
             tablero = new Tablero();
-            JPanel jpanel = tablero.crearTablero(heroesElegidos.get(0),heroesElegidos.get(1),heroesElegidos.get(2));
+            JPanel jpanel = tablero.crearTablero(heroesElegidos.get(0),heroesElegidos.get(1),heroesElegidos.get(2), this);
             TableroJuego.setLayout(new java.awt.BorderLayout());
             TableroJuego.add(jpanel, java.awt.BorderLayout.CENTER);
             TableroJuego.revalidate();

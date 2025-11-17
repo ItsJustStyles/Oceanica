@@ -10,8 +10,11 @@ package com.mycompany.oceanica;
  */
 public class EstoyCodificando extends Ataque{
     Juego refFrame;
-    public EstoyCodificando(int dano, Tablero tablero, Juego refFrame) {
+    private String registro;
+    
+    public EstoyCodificando(int dano, Tablero tablero, Juego refFrame, String registro) {
         this.refFrame = refFrame;
+        this.registro = registro;
         super(dano, tablero);
     }
 
@@ -37,7 +40,7 @@ public class EstoyCodificando extends Ataque{
     
     public void EstoNoEsUnJuego(){
         for(Casilla c : tablero.casillas){
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10, registro);
         }
         ReproductorSonido sonido = new ReproductorSonido("/sonidos/EstoNoEsUnJuego.wav", refFrame);
         sonido.play();

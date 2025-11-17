@@ -12,8 +12,10 @@ import java.util.Random;
  */
 public class ThundersUnderTheSea extends Ataque{
     Random random = new Random();
-    public ThundersUnderTheSea(int dano, Tablero tablero) {
+    private String registro;
+    public ThundersUnderTheSea(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class ThundersUnderTheSea extends Ataque{
             int damageThunder = random.nextInt(11) + 10;
             int indexRandom = random.nextInt(tablero.casillas.size());
             Casilla c = tablero.casillas.get(indexRandom);
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), damageThunder);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), damageThunder, registro);
         }
     }
     
@@ -46,7 +48,7 @@ public class ThundersUnderTheSea extends Ataque{
             int descargas = random.nextInt(10) + 1;
             int indexRandom = random.nextInt(tablero.casillas.size());
             Casilla c = tablero.casillas.get(indexRandom);
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10*descargas);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10*descargas, registro);
         }
     }
     
@@ -67,7 +69,7 @@ public class ThundersUnderTheSea extends Ataque{
                 boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
                 
                 if(filaValida && columnaValida){
-                    tablero.recibirDanoLocacion(fila, columna, dano);
+                    tablero.recibirDanoLocacion(fila, columna, dano, registro);
                 }
             }
         }

@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -21,6 +22,8 @@ import javax.swing.SwingConstants;
  * @author lacay
  */
 public class Tablero{
+    
+    private JFrame refFrame;
     private static final int FILAS = 20;
     List<Casilla> casillas = new ArrayList<>();
     List<Casilla> casillasP1 = new ArrayList<>();
@@ -33,7 +36,8 @@ public class Tablero{
     private static final int COLUMNAS = 30;
     Random random = new Random();
     
-    public JPanel crearTablero(Personaje p1, Personaje p2, Personaje p3){
+    public JPanel crearTablero(Personaje p1, Personaje p2, Personaje p3, JFrame refFrame){
+        this.refFrame = refFrame;
         JPanel panelTablero = new JPanel();
         panelTablero.setLayout(new GridLayout(FILAS + 1, COLUMNAS + 1, 1, 1));        
         panelTablero.add(crearEtiquetaVacia());
@@ -80,7 +84,7 @@ public class Tablero{
     
     private JPanel crearCeldaTablero(int fila, int columna,Personaje p, Color color, List<Casilla> personaje) {
         JPanel celda = new JPanel();
-        Casilla casilla = new Casilla(100,p,fila,columna,celda);
+        Casilla casilla = new Casilla(100,p,fila,columna,celda, refFrame);
         casillas.add(casilla);
         personaje.add(casilla);
         celda.setBackground(color); 
@@ -189,11 +193,12 @@ public class Tablero{
         return porcentajeMuerto;
     }
     
-    public void recibirDanoLocacion(int fila, int columna, int dano){
+    public void recibirDanoLocacion(int fila, int columna, int dano, String registro){
         for(Casilla c : casillas){
             if(c.getX() == fila && c.getY() == columna){
                 if (c.esta_vivo()){
                     c.recibirAtaque(dano);
+                    c.registrar(registro);
                 }
                 if(!c.esta_vivo()){
                     c.ponerX();
@@ -219,5 +224,36 @@ public class Tablero{
         }
     }
     
+    public void pintarVivasCasillas(){
+        for(Casilla c : casillas){
+            c.pintarVivas();
+        }
+    }
+    
+    public void MostrarCasillasOcupadas(){
+        if(!remolinos.isEmpty()){
+            for(Remolino r : remolinos){
+                Casilla c = CasillaPorCords(r.getX(), r.getY());
+                c.setTieneRemolino(true);
+            }
+        }
+        
+        if(!volcanes.isEmpty()){
+            for(Volcan v : volcanes){
+                Casilla c = CasillaPorCords(v.getX(), v.getY());
+                c.setTieneVolcan(true);
+            }
+        }
+        
+        for(Casilla c : casillas){
+            c.MostrarCeldasOcupadas();
+        }
+        
+    }
+    
+    public void infoCasillas(int x, int y){
+        Casilla c = CasillaPorCords(x, y);
+        c.consultarCelda();
+    }
     
 }

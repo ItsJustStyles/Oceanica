@@ -14,9 +14,11 @@ import java.util.Random;
  */
 public class UnderseaFire extends Ataque {
      private final Random random = new Random();
+     private String registro;
 
-    public UnderseaFire(int dano, Tablero tablero) {
+    public UnderseaFire(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
     
     public void volcanoRaising(){
@@ -34,7 +36,7 @@ public class UnderseaFire extends Ataque {
 
         for (int i = 0; i < piedras; i++) {
             Casilla destino = tablero.casillas.get(random.nextInt(tablero.casillas.size()));
-            tablero.recibirDanoLocacion(destino.getX(), destino.getY(), 20);
+            tablero.recibirDanoLocacion(destino.getX(), destino.getY(), 20, registro);
         }
   
     
@@ -67,7 +69,7 @@ public class UnderseaFire extends Ataque {
                 boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
                 
                 if(filaValida && columnaValida){
-                    tablero.recibirDanoLocacion(fila, columna, dano);
+                    tablero.recibirDanoLocacion(fila, columna, dano, registro);
                 }
             }
         }
@@ -87,7 +89,7 @@ public class UnderseaFire extends Ataque {
             boolean valido = (x >= 1 && x <= MAX_FILAS &&
                               y >= 1 && y <= MAX_COLUMNAS);
             if (valido) {
-                tablero.recibirDanoLocacion(x, y, dañoTotal);
+                tablero.recibirDanoLocacion(x, y, dañoTotal, registro);
             }
         }
     }
