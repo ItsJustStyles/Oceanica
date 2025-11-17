@@ -1,15 +1,25 @@
-FROM eclipse-temurin:24-jdk
-
+# Etapa 1: Construir el JAR
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copiamos todo el proyecto
-COPY . .
+# Copiar archivos del proyecto
+COPY pom.xml .
+COPY src ./src
 
-# Damos permiso al wrapper de Maven (mvnw)
-RUN chmod +x mvnw
+# Compilar el proyecto
+RUN mvn -q -e -DskipTests package
 
-# Compilamos sin tests
-RUN ./mvnw -e -X -DskipTests clean package
+# Etapa 2: Ejecutar el servidor
+FROM eclipse-temurin:21-jre
+WORKDIR /app
 
-# Ejecutamos la aplicación
-CMD ["java", "--enable-preview", "-jar", "target/Oceanica-1.0-SNAPSHOT.jar"]
+# Copiar el jar construido
+COPY --from=build /app/target/*.jar app.jar
+
+# Render asigna el puerto mediante $PORT
+ENV PORT=8080
+
+EXPOSE 8080
+
+# Ejecutar la aplicación
+CMD ["sh", "-c", "java -jar app.jar"]
