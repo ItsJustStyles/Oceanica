@@ -122,10 +122,13 @@ public class realizarAtaquePorGrupo {
             case "Undersea Fire":
                 UnderseaFire attack7 = new UnderseaFire(100, tablero);
                 if(ataqueSolicitado.equals("VolcanoRaising")){
+                    attack7.volcanoRaising();
                     return true;
                 }else if(ataqueSolicitado.equals("VolcanoExplosion")){
+                    attack7.volcanoExplosion();
                     return true;
                 }else if(ataqueSolicitado.equals("TermalRush")){
+                    attack7.termalRush();
                     return true;
                 }else{
                     return false;

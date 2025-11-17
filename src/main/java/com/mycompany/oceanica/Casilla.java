@@ -63,6 +63,7 @@ public class Casilla {
     
     public void ponerX(){
         muerta = true;
+        
         pX = new JLabel("X");
         panel.setLayout(new BorderLayout());
         pX.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
