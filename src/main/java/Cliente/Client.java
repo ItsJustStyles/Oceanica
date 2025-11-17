@@ -23,8 +23,8 @@ import java.util.logging.Logger;
  * @author diego
  */
 public class Client {
-    private final int PORT = 35500;
-    private final String IP_ADDRESS = "localhost";
+    private final int PORT = 19773;
+    private final String IP_ADDRESS = "bore.pub";
     private Socket socket;
     private Juego refFrame;
     public ObjectInputStream objectListener;
