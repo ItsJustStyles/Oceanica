@@ -12,6 +12,7 @@ import Models.CommandUtil;
 import Servidor.Server;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -24,6 +25,8 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +40,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -45,6 +50,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 public class Juego extends javax.swing.JFrame {
@@ -54,6 +60,7 @@ public class Juego extends javax.swing.JFrame {
     private Tablero tablero;
     private String nombreCivilización;
     Client cliente;
+    private JDialog infoDialog;
     realizarAtaquePorGrupo attack;
     
     private CardLayout cardLayout = new CardLayout();
@@ -231,6 +238,11 @@ public class Juego extends javax.swing.JFrame {
     return listaFinal;
 }
     
+    
+    public void writeConsola(String msg){
+        consola.setText(msg);
+    }
+    
     public void writeMessage(String msg){
         jugadoresConectados.append(msg + "\n");
     }
@@ -319,6 +331,101 @@ public class Juego extends javax.swing.JFrame {
         tablero.vidaCasillas();
     }
     
+    private void mostrarPanelInformacion(Personaje heroe) {
+        infoDialog = new JDialog(SwingUtilities.getWindowAncestor(this), "Detalles de " + heroe.getNombre(), Dialog.ModalityType.APPLICATION_MODAL);
+        // infoDialog.setUndecorated(true);
+
+        JPanel panelDetalles = new JPanel();
+        panelDetalles.setLayout(new BoxLayout(panelDetalles, BoxLayout.Y_AXIS));
+        panelDetalles.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15)); 
+        panelDetalles.setBackground(new Color(30, 30, 30)); 
+        
+        
+        infoAtaques ataques = new infoAtaques(heroe.getAtaque());
+        String[] nombreAtaques = ataques.buscar();
+        
+        String ataque1 = nombreAtaques[0];
+        String ataque2 = nombreAtaques[1];
+        String ataque3 = nombreAtaques[2];
+        
+        String ataque4;
+        JLabel lblAtaque4 = null;
+        if(heroe.getAtaque().equals("Estoy codificando")){
+            ataque4 = nombreAtaques[3];
+            lblAtaque4 = new JLabel("4. " + ataque4);
+            lblAtaque4.setForeground(Color.WHITE);
+            lblAtaque4.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        }
+        
+        // --- Contenido del panel de detalles ---
+        JLabel lblTitulo = new JLabel("Información de " + heroe.getNombre());
+        lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        lblTitulo.setForeground(new Color(255, 200, 0));
+        lblTitulo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+                
+        JLabel lblAtaqueTittle = new JLabel("Ataques:");
+        lblAtaqueTittle.setForeground(Color.WHITE);
+        lblAtaqueTittle.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        
+        JLabel lblAtaque1 = new JLabel("1. " + ataque1);
+        lblAtaque1.setForeground(Color.WHITE);
+        lblAtaque1.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        
+        JLabel lblAtaque2 = new JLabel("2. " + ataque2);
+        lblAtaque2.setForeground(Color.WHITE);
+        lblAtaque2.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        
+        JLabel lblAtaque3 = new JLabel("3. " + ataque3);
+        lblAtaque3.setForeground(Color.WHITE);
+        lblAtaque3.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        
+        
+        // Botón para cerrar el diálogo
+        JButton btnCerrar = new JButton("Cerrar");
+        btnCerrar.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        btnCerrar.setBackground(new Color(70, 70, 70)); // Fondo gris oscuro para el botón
+        btnCerrar.setForeground(Color.WHITE);
+        btnCerrar.setFocusPainted(false); // Quitar el borde de foco
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                infoDialog.dispose();
+            }
+        });
+
+        // Añadir componentes al panel de detalles
+        panelDetalles.add(lblTitulo);
+        panelDetalles.add(Box.createVerticalStrut(15)); // Espacio vertical
+        
+        panelDetalles.add(lblAtaqueTittle);
+        
+        panelDetalles.add(lblAtaque1);
+        if(!heroe.getAtaque().equals("Control")){
+            panelDetalles.add(lblAtaque2);
+            panelDetalles.add(lblAtaque3);
+        }
+        if(heroe.getAtaque().equals("Control")){
+            JLabel lblAtaqueControl = new JLabel("<html>Este ataque utiliza a un luchador random del objetivo y realiza <br>" + 
+            "un ataque random de los que posee el luchador al objetivo</html>");
+            lblAtaqueControl.setForeground(Color.WHITE);
+            lblAtaqueControl.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            panelDetalles.add(Box.createVerticalStrut(10));
+            panelDetalles.add(lblAtaqueControl);
+        }
+        
+        if(heroe.getAtaque().equals("Estoy codificando")){
+            panelDetalles.add(lblAtaque4);
+        }
+        
+        panelDetalles.add(Box.createVerticalStrut(10)); // Espacio
+        panelDetalles.add(Box.createVerticalStrut(25)); // Espacio antes del botón
+        panelDetalles.add(btnCerrar);
+        
+        infoDialog.setContentPane(panelDetalles); 
+        infoDialog.pack(); 
+        infoDialog.setLocationRelativeTo(SwingUtilities.getWindowAncestor(this)); 
+        infoDialog.setVisible(true); 
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -1040,6 +1147,14 @@ public class Juego extends javax.swing.JFrame {
                 lblIcono.setIcon(iconoRedimensionado);
                 lblIcono.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
+                final Personaje heroeActual = heroesElegidos.get(i);
+                lblIcono.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    mostrarPanelInformacion(heroeActual); 
+                    }
+                });
+                
                 java.awt.Color fondoNegroTransparente = new java.awt.Color(0, 0, 0, 100);
                 panelBitacora.setBackground(fondoNegroTransparente);
                 
@@ -1094,8 +1209,6 @@ public class Juego extends javax.swing.JFrame {
                 panelImagen.add(panelPersonaje);
                 panelImagen.add(Box.createHorizontalStrut(25));
                 
-                
-                //personajes.add(lblIcono);
                 personajes.add(panelImagen);
                 
                 

@@ -61,6 +61,16 @@
         "nombreSecundario": "Juancini"
     },
     {
+        "nombre":  "Inspector gadget",
+        "icon": "/imagenes/personajesIcons/Inspector.jpeg",
+        "ataque": "Poseidon Trident",
+        "porcentaje": 30,
+        "poder": 75,
+        "resistencia": 100,
+        "sanidad": 50,
+        "nombreSecundario": "TheBalatro"
+    },
+    {
         "nombre":  "Xocas",
         "icon": "/imagenes/personajesIcons/Xokas.gif",
         "ataque": "Estoy codificando",
@@ -109,6 +119,26 @@
         "resistencia": 50,
         "sanidad": 50,
         "nombreSecundario": "Goku"
+    },
+    {
+        "nombre":  "Jimbo",
+        "icon": "/imagenes/personajesIcons/balatro.gif",
+        "ataque": "Hora de balatrear",
+        "porcentaje": 20,
+        "poder": 75,
+        "resistencia": 75,
+        "sanidad": 100,
+        "nombreSecundario": "TheBalatro"
+    },
+    {
+        "nombre":  "Makima",
+        "icon": "/imagenes/personajesIcons/makima.gif",
+        "ataque": "Control",
+        "porcentaje": 50,
+        "poder": 75,
+        "resistencia": 50,
+        "sanidad": 75,
+        "nombreSecundario": "TheBalatro"
     }
 
 ]

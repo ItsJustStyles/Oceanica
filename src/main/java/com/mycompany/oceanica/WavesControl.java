@@ -15,7 +15,7 @@ import java.util.Random;
 public class WavesControl extends Ataque {
     
      private final Random random = new Random();
-     private final List<Remolino> remolinos = new ArrayList<>();
+     
      private final List<Casilla> casillasRadioactivas = new ArrayList<>();
      Juego refFrame;
 
@@ -33,14 +33,14 @@ public class WavesControl extends Ataque {
         Casilla casilla = casillaRandom();
         int radio = random.nextInt(9) + 2;
         Remolino r = new Remolino(casilla.getX(),casilla.getY(),radio,true);
-        remolinos.add(r);
+        tablero.remolinos.add(r);
         danoArea(casilla,radio);
                 
     }
     public void sendHumanGarbage() {
-        if (remolinos.isEmpty()) return;
+        if (tablero.remolinos.isEmpty()) return;
 
-        Remolino r = remolinos.get(random.nextInt(remolinos.size()));
+        Remolino r = tablero.remolinos.get(random.nextInt(tablero.remolinos.size()));
         int toneladas = 10 * r.getRadio();
 
         for (int i = 0; i < toneladas; i++) {
