@@ -33,6 +33,12 @@ public class CommandFactory {
                 return new CommandName(args);
             case "MOSTRARPORCENTAJECELDAS":
                 return new CommandPorcentajeCeldas(args);
+            case "PINTARVIVAS":
+                return new CommandPintarVivas(args);
+            case "MOSTRARCELDASOCUPADAS":
+                return new CommandMostrarCeldasOcupadas(args);
+            case "CONSULTARCELDA":
+                return new CommandConsultarCelda(args);
             default:
                 return null;
         }

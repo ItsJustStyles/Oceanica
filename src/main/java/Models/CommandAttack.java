@@ -91,7 +91,8 @@ public class CommandAttack extends Command{
                 columna = "0";
             }
         }catch(ArrayIndexOutOfBoundsException e){
-            System.out.println("Parametros para el ataque imcompletos");
+            String msg = "Parametros para el ataque imcompletos";
+            server.getRefFrame().writeConsola(msg);
             this.setIsBroadcast(false);
             return;
         }

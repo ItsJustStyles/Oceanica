@@ -12,8 +12,11 @@ import java.util.Random;
  */
 public class FishTelepathy extends Ataque{
     Random random = new Random();
-    public FishTelepathy(int dano, Tablero tablero) {
+    private String registro;
+    
+    public FishTelepathy(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
 
     @Override
@@ -26,7 +29,7 @@ public class FishTelepathy extends Ataque{
         for(int i = 0; i < peces; i++){
             int indexRandom = random.nextInt(tablero.casillas.size());
             Casilla c = tablero.casillas.get(indexRandom);
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), 33);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 33, registro);
         }
     }
     
@@ -48,7 +51,7 @@ public class FishTelepathy extends Ataque{
         for(int i = 0; i < pulpos; i++){
             int indexRandom = random.nextInt(tablero.casillas.size());
             Casilla c = tablero.casillas.get(indexRandom);
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), 25);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 25, registro);
         }
     }
     
@@ -70,7 +73,7 @@ public class FishTelepathy extends Ataque{
                 boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
                 
                 if(filaValida && columnaValida){
-                    tablero.recibirDanoLocacion(fila, columna, dano);
+                    tablero.recibirDanoLocacion(fila, columna, dano, registro);
                 }
             }
         }

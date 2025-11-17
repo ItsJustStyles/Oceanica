@@ -22,23 +22,23 @@ public class realizarAtaquePorGrupo {
         this.todosLosPersonajes = todosLosPersonajes;
     }
     
-    public boolean atacar(String p, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
+    public boolean atacar(String p, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3, String registro){
         String GrupoAtaque = buscarPersonaje(p);
         if(GrupoAtaque == null){
             System.out.println("Personaje no valido");
             return false;
         }
-        boolean exito = buscarAtaque(GrupoAtaque, ataque, fila, columna, fila2, columna2, fila3, columna3);
+        boolean exito = buscarAtaque(GrupoAtaque, ataque, fila, columna, fila2, columna2, fila3, columna3, registro);
         if(exito){
             return true;
         }
         return false;
     }
     
-    public boolean buscarAtaque(String ataque, String ataqueSolicitado, int fila, int columna, int fila2, int columna2, int fila3, int columna3){
+    public boolean buscarAtaque(String ataque, String ataqueSolicitado, int fila, int columna, int fila2, int columna2, int fila3, int columna3, String registro){
         switch(ataque){
             case "Release the Kraken":
-                ReleaseTheKraken attack = new ReleaseTheKraken(100, tablero);
+                ReleaseTheKraken attack = new ReleaseTheKraken(100, tablero, registro);
                 if(ataqueSolicitado.equals("Tentaculos")){
                     attack.tentaculos();
                     return true;
@@ -53,7 +53,7 @@ public class realizarAtaquePorGrupo {
                     //System.out.println("No hay ataque con ese nombre");
                 }
             case "Poseidon Trident":
-                PoseidonTrident attack2 = new PoseidonTrident(100, tablero);
+                PoseidonTrident attack2 = new PoseidonTrident(100, tablero, registro);
                 if(ataqueSolicitado.equals("ThreeLines")){
                     attack2.ThreeLines(fila, columna, fila2, columna2, fila3, columna3);
                     return true;
@@ -61,7 +61,7 @@ public class realizarAtaquePorGrupo {
                     return false;
                 }
             case "Fish Telepathy":
-                FishTelepathy attack3 = new FishTelepathy(50, tablero);
+                FishTelepathy attack3 = new FishTelepathy(50, tablero, registro);
                 if(ataqueSolicitado.equals("Cardumen")){
                     attack3.Cardumen();
                     return true;
@@ -75,7 +75,7 @@ public class realizarAtaquePorGrupo {
                     return false;
                 }
             case "Thunders under the sea":
-                ThundersUnderTheSea attack4 = new ThundersUnderTheSea(100, tablero);
+                ThundersUnderTheSea attack4 = new ThundersUnderTheSea(100, tablero, registro);
                 if(ataqueSolicitado.equals("ThunderRain")){
                     attack4.Thunder_rain();
                     return true;
@@ -89,7 +89,7 @@ public class realizarAtaquePorGrupo {
                     return false;
                 }
             case "Waves control":
-                WavesControl attack5 = new WavesControl(100, tablero);
+                WavesControl attack5 = new WavesControl(100, tablero, registro);
                 if(ataqueSolicitado.equals("SwirlRaising")){
                     attack5.SwirlRaising();
                     return true;
@@ -103,7 +103,7 @@ public class realizarAtaquePorGrupo {
                     return false;
                 }
             case "Estoy codificando":
-                EstoyCodificando attack6 = new EstoyCodificando(100, tablero, refFrame);
+                EstoyCodificando attack6 = new EstoyCodificando(100, tablero, refFrame, registro);
                 if(ataqueSolicitado.equals("EstoNoEsUnJuego")){
                     attack6.EstoNoEsUnJuego();
                     return true;
@@ -120,7 +120,7 @@ public class realizarAtaquePorGrupo {
                     return false;
                 }
             case "Undersea Fire":
-                UnderseaFire attack7 = new UnderseaFire(100, tablero);
+                UnderseaFire attack7 = new UnderseaFire(100, tablero, registro);
                 if(ataqueSolicitado.equals("VolcanoRaising")){
                     attack7.volcanoRaising();
                     return true;

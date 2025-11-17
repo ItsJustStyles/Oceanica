@@ -12,10 +12,12 @@ import java.util.Random;
  */
 public class ReleaseTheKraken extends Ataque{
     private Random random = new Random();
+    private String registro;
     
     
-    public ReleaseTheKraken(int dano, Tablero tablero) {
+    public ReleaseTheKraken(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
 
     
@@ -67,7 +69,7 @@ public class ReleaseTheKraken extends Ataque{
                 boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
                 
                 if(filaValida && columnaValida){
-                    tablero.recibirDanoLocacion(fila, columna, dano);
+                    tablero.recibirDanoLocacion(fila, columna, dano, registro);
                 }
             }
         }
@@ -78,7 +80,7 @@ public class ReleaseTheKraken extends Ataque{
                 for (int fila = celda.getX(); fila >= celda.getX()-cant; fila--) {
                     boolean filaValida = fila >= 0;
                     if (filaValida){
-                        tablero.recibirDanoLocacion(fila,celda.getY(),dano);
+                        tablero.recibirDanoLocacion(fila,celda.getY(),dano, registro);
                     }
                 }
                 break;
@@ -86,7 +88,7 @@ public class ReleaseTheKraken extends Ataque{
                 for (int fila = celda.getX(); fila <= celda.getX()+cant; fila++) {
                     boolean filaValida = fila <= 20;
                     if (filaValida){
-                        tablero.recibirDanoLocacion(fila,celda.getY(),dano);
+                        tablero.recibirDanoLocacion(fila,celda.getY(),dano, registro);
                     }
                 }
                 break;
@@ -94,7 +96,7 @@ public class ReleaseTheKraken extends Ataque{
                 for (int columna = celda.getY(); columna <= celda.getY() + cant; columna++) {
                     boolean columnaValida = columna <= 30;
                     if (columnaValida){
-                        tablero.recibirDanoLocacion(celda.getX(),columna,dano);
+                        tablero.recibirDanoLocacion(celda.getX(),columna,dano, registro);
                     }
                 }
                 break;
@@ -102,7 +104,7 @@ public class ReleaseTheKraken extends Ataque{
                 for (int columna = celda.getY(); columna >= celda.getY() - cant; columna--) {
                     boolean columnaValida = columna >= 0;
                     if (columnaValida){
-                        tablero.recibirDanoLocacion(celda.getX(),columna,dano);
+                        tablero.recibirDanoLocacion(celda.getX(),columna,dano, registro);
                     }
                 }
                 break;

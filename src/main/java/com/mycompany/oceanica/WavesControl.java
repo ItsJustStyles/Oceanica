@@ -15,14 +15,16 @@ import java.util.Random;
 public class WavesControl extends Ataque {
     
      private final Random random = new Random();
-     private final List<Remolino> remolinos = new ArrayList<>();
+     private String registro;
+     
      private final List<Casilla> casillasRadioactivas = new ArrayList<>();
      Juego refFrame;
 
     
 
-    public WavesControl(int dano, Tablero tablero) {
+    public WavesControl(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
 
     @Override
@@ -33,20 +35,20 @@ public class WavesControl extends Ataque {
         Casilla casilla = casillaRandom();
         int radio = random.nextInt(9) + 2;
         Remolino r = new Remolino(casilla.getX(),casilla.getY(),radio,true);
-        remolinos.add(r);
+        tablero.remolinos.add(r);
         danoArea(casilla,radio);
                 
     }
     public void sendHumanGarbage() {
-        if (remolinos.isEmpty()) return;
+        if (tablero.remolinos.isEmpty()) return;
 
-        Remolino r = remolinos.get(random.nextInt(remolinos.size()));
+        Remolino r = tablero.remolinos.get(random.nextInt(tablero.remolinos.size()));
         int toneladas = 10 * r.getRadio();
 
         for (int i = 0; i < toneladas; i++) {
             Casilla destino = tablero.casillas.get(random.nextInt(tablero.casillas.size()));
 
-            tablero.recibirDanoLocacion(destino.getX(), destino.getY(), 25);
+            tablero.recibirDanoLocacion(destino.getX(), destino.getY(), 25, registro);
 
             if (random.nextBoolean()) {
                 synchronized (casillasRadioactivas) {
@@ -61,7 +63,7 @@ public class WavesControl extends Ataque {
         int segundos = random.nextInt(10) + 1; 
         
         for (Casilla c : casillasRadioactivas) {
-            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10*segundos);
+            tablero.recibirDanoLocacion(c.getX(), c.getY(), 10*segundos, registro);
             
         }
     }
@@ -91,7 +93,7 @@ public class WavesControl extends Ataque {
                 boolean columnaValida = (columna >= 0 && columna <= MAX_COLUMNAS);
                 
                 if(filaValida && columnaValida){
-                    tablero.recibirDanoLocacion(fila, columna, dano);
+                    tablero.recibirDanoLocacion(fila, columna, dano, registro);
                 }
             }
         }

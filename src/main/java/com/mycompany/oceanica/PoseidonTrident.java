@@ -12,9 +12,11 @@ import java.util.Random;
  */
 public class PoseidonTrident extends Ataque{
     Random random = new Random();
+    private String registro;
 
-    public PoseidonTrident(int dano, Tablero tablero) {
+    public PoseidonTrident(int dano, Tablero tablero, String registro) {
         super(dano, tablero);
+        this.registro = registro;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class PoseidonTrident extends Ataque{
     for(int i = 0; i < x; i++){
         int indexRandom = random.nextInt(tablero.casillas.size());
         Casilla c = tablero.casillas.get(indexRandom);
-        tablero.recibirDanoLocacion(c.getX(), c.getY(), 100);
+        tablero.recibirDanoLocacion(c.getX(), c.getY(), 100, registro);
 
     }
         
@@ -52,7 +54,7 @@ public class PoseidonTrident extends Ataque{
             for (int fila = celda.getX(); fila >= celda.getX()-cant; fila--) {
                 boolean filaValida = fila >= 0;
                 if (filaValida){
-                    tablero.recibirDanoLocacion(fila,celda.getY(),dano);
+                    tablero.recibirDanoLocacion(fila,celda.getY(),dano, registro);
                 }
             }
             break;
@@ -60,7 +62,7 @@ public class PoseidonTrident extends Ataque{
             for (int fila = celda.getX(); fila <= celda.getX()+cant; fila++) {
                 boolean filaValida = fila <= 20;
                 if (filaValida){
-                    tablero.recibirDanoLocacion(fila,celda.getY(),dano);
+                    tablero.recibirDanoLocacion(fila,celda.getY(),dano, registro);
                 }
             }
             break;
@@ -68,7 +70,7 @@ public class PoseidonTrident extends Ataque{
             for (int columna = celda.getY(); columna <= celda.getY() + cant; columna++) {
                 boolean columnaValida = columna <= 30;
                 if (columnaValida){
-                    tablero.recibirDanoLocacion(celda.getX(),columna,dano);
+                    tablero.recibirDanoLocacion(celda.getX(),columna,dano, registro);
                 }
             }
             break;
@@ -76,7 +78,7 @@ public class PoseidonTrident extends Ataque{
             for (int columna = celda.getY(); columna >= celda.getY() - cant; columna--) {
                 boolean columnaValida = columna >= 0;
                 if (columnaValida){
-                    tablero.recibirDanoLocacion(celda.getX(),columna,dano);
+                    tablero.recibirDanoLocacion(celda.getX(),columna,dano, registro);
                 }
             }
             break;
