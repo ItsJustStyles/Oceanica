@@ -191,7 +191,7 @@ public class Tablero{
     public void recibirDanoLocacion(int fila, int columna, int dano){
         for(Casilla c : casillas){
             if(c.getX() == fila && c.getY() == columna){
-                if (c.esta_vivo())c.recibirAtaque(dano);
+                c.recibirAtaque(dano);
                 if(!c.esta_vivo()){
                     c.ponerX();
                 }
