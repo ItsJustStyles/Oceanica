@@ -48,7 +48,6 @@ com\mycompany\oceanica\Personaje.class
 com\mycompany\oceanica\GestorJson$1.class
 com\mycompany\oceanica\infoAtaques.class
 com\mycompany\oceanica\ThundersUnderTheSea.class
-com\mycompany\oceanica\GameWebSocket.class
 com\mycompany\oceanica\Oceanica.class
 com\mycompany\oceanica\Casilla$2.class
 com\mycompany\oceanica\Juego$4.class
