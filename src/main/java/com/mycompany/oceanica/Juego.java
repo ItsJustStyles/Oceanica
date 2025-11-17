@@ -13,12 +13,18 @@ import Servidor.Server;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -99,15 +105,18 @@ public class Juego extends javax.swing.JFrame {
                 lblHumanidad.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 
                 ImageIcon iconoOriginal = new ImageIcon(getClass().getResource(p.getRutaIcon()));
+                ImageIcon iconoRedimensionado;
                 
-                JLabel lblIcono = new JLabel();
-                ImageIcon iconoRedimensionado = new ImageIcon(
-                    iconoOriginal.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)
-                );
+                JLabel lblIcono = new JLabel();             
+                if(p.getRutaIcon().contains(".gif")){
+                    iconoRedimensionado = iconoOriginal;
+                }else{
+                    iconoRedimensionado = new ImageIcon(iconoOriginal.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+                }
+
                 lblIcono.setIcon(iconoRedimensionado);
                 lblIcono.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-
-
+                
                 JLabel lblNombre = new JLabel(p.getNombre());
                 lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12));
                 lblNombre.setAlignmentX(JComponent.CENTER_ALIGNMENT); 
@@ -1018,9 +1027,16 @@ public class Juego extends javax.swing.JFrame {
                  
                 var iconoOriginal = new ImageIcon(getClass().getResource(heroesElegidos.get(i).getRutaIcon()));
                 JLabel lblIcono = new JLabel();
-                ImageIcon iconoRedimensionado = new ImageIcon(
-                iconoOriginal.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)
-                );
+                
+                ImageIcon iconoRedimensionado;
+                
+                if(heroesElegidos.get(i).getRutaIcon().contains(".gif")){
+                    iconoRedimensionado = iconoOriginal;
+                }else{
+                    iconoRedimensionado = new ImageIcon(iconoOriginal.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+                }
+                
+                
                 lblIcono.setIcon(iconoRedimensionado);
                 lblIcono.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 

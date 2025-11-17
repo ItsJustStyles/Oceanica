@@ -2,7 +2,7 @@
     
     {
         "nombre": "Alisa",
-        "icon": "/imagenes/personajesIcons/Alya.jpg",
+        "icon": "/imagenes/personajesIcons/Alya.gif",
         "ataque": "Fish Telepathy",
         "porcentaje": 30,
         "poder": 75,
@@ -62,7 +62,7 @@
     },
     {
         "nombre":  "Xocas",
-        "icon": "/imagenes/personajesIcons/Xocas.jpeg",
+        "icon": "/imagenes/personajesIcons/Xokas.gif",
         "ataque": "Estoy codificando",
         "porcentaje": 50,
         "poder": 100,

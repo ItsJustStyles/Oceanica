@@ -27,6 +27,8 @@ public class Tablero{
     List<Casilla> casillasP2 = new ArrayList<>();
     List<Casilla> casillasP3 = new ArrayList<>();
     
+    public List<Volcan> volcanes = new ArrayList<>();
+    
     private static final int COLUMNAS = 30;
     Random random = new Random();
     

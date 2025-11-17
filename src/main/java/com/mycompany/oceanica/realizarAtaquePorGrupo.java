@@ -119,6 +119,17 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                 }
+            case "Undersea Fire":
+                UnderseaFire attack7 = new UnderseaFire(100, tablero);
+                if(ataqueSolicitado.equals("VolcanoRaising")){
+                    return true;
+                }else if(ataqueSolicitado.equals("VolcanoExplosion")){
+                    return true;
+                }else if(ataqueSolicitado.equals("TermalRush")){
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           

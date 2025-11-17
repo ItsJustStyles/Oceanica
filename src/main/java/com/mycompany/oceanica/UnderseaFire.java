@@ -14,7 +14,6 @@ import java.util.Random;
  */
 public class UnderseaFire extends Ataque {
      private final Random random = new Random();
-     private final List<Volcan> volcanes = new ArrayList<>();
 
     public UnderseaFire(int dano, Tablero tablero) {
         super(dano, tablero);
@@ -24,13 +23,13 @@ public class UnderseaFire extends Ataque {
         Casilla casilla = casillaRandom();
         int radio = random.nextInt(10) + 1;
         Volcan v = new Volcan(casilla.getX(),casilla.getY(),radio,true);
-        volcanes.add(v);
+        tablero.volcanes.add(v);
         danoArea(casilla,radio);
     }
     public void volcanoExplosion(){
-        if (volcanes.isEmpty()) return;
+        if (tablero.volcanes.isEmpty()) return;
 
-        Volcan v = volcanes.get(random.nextInt(volcanes.size()));
+        Volcan v = tablero.volcanes.get(random.nextInt(tablero.volcanes.size()));
         int piedras = 10 * v.getRadio();
 
         for (int i = 0; i < piedras; i++) {
@@ -41,8 +40,8 @@ public class UnderseaFire extends Ataque {
     
     }
     public void termalRush(){
-        if (volcanes.isEmpty()) return;
-        Volcan v = volcanes.get(random.nextInt(volcanes.size()));
+        if (tablero.volcanes.isEmpty()) return;
+        Volcan v = tablero.volcanes.get(random.nextInt(tablero.volcanes.size()));
         int segundos = random.nextInt(2) + 5; // 5 o 6
         int dañoPorSegundo = v.getRadio();
         int dañoTotal = dañoPorSegundo * segundos;
