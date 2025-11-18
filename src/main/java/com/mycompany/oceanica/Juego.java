@@ -60,6 +60,12 @@ public class Juego extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Juego.class.getName());
     
     int ataquesRealizados = 0;
+    // Para los personajes controlados por Makima xd:
+    private String personajeControlado;
+    private String ataqueControlado;
+    private int[] filasControladas;
+    private int[] ColumnasControladas;
+    
     public Tablero tablero;
     private String nombreCivilización;
     Client cliente;
@@ -324,13 +330,55 @@ public class Juego extends javax.swing.JFrame {
         }
     }
     
-    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3, String registro){
+    public boolean recibirAtaqueCliente(String personaje, String ataque, int fila, int columna, int fila2, int columna2, int fila3, int columna3, String registro, String attacker){
+        if(ataque.equals("Control") && personaje.equals("Makima")){
+            Random random = new Random();
+            Personaje p = heroesElegidos.get(random.nextInt(3));
+            personaje = p.getNombre();
+            
+            infoAtaques attacks = new infoAtaques(p.getAtaque());
+            String[] listaAttacks = attacks.buscarControl();
+            int listaAttacksIndice = random.nextInt(listaAttacks.length);
+            ataque = listaAttacks[listaAttacksIndice];
+            
+            personajeControlado = personaje;
+            ataqueControlado = ataque;
+            
+            fila = random.nextInt(20) + 1;
+            fila2 = random.nextInt(20) + 1;
+            fila3 = random.nextInt(20) + 1;
+            
+            columna = random.nextInt(30) + 1;
+            columna2 = random.nextInt(30) + 1;
+            columna3 = random.nextInt(30) + 1;
+            
+            this.filasControladas = new int[]{fila, fila2, fila3};
+            this.ColumnasControladas = new int[]{columna, columna2, columna3};
+            
+            registro = "Se recibio un ataque del jugador " + attacker + " controlando a " + personaje + " con Makima y usando el ataque: " + ataque;
+        }
         if(attack.atacar(personaje, ataque, fila, columna, fila2, columna2, fila3, columna3, registro)){
             vidaTropas();
             this.repaint();
             return true;
         }
         return false;
+    }
+
+    public String getPersonajeControlado() {
+        return personajeControlado;
+    }
+
+    public String getAtaqueControlado() {
+        return ataqueControlado;
+    }
+
+    public int[] getFilasControladas() {
+        return filasControladas;
+    }
+
+    public int[] getColumnasControladas() {
+        return ColumnasControladas;
     }
     
     public boolean haMuerto(){
@@ -469,17 +517,31 @@ public class Juego extends javax.swing.JFrame {
         panelDetalles.add(lblAtaqueTittle);
         
         panelDetalles.add(lblAtaque1);
-        if(!heroe.getAtaque().equals("Control")){
-            panelDetalles.add(lblAtaque2);
-            panelDetalles.add(lblAtaque3);
-        }
+        panelDetalles.add(lblAtaque2);
+        panelDetalles.add(lblAtaque3);
+        
         if(heroe.getAtaque().equals("Control")){
             JLabel lblAtaqueControl = new JLabel("<html>Este ataque utiliza a un luchador random del objetivo y realiza <br>" + 
             "un ataque random de los que posee el luchador al objetivo</html>");
             lblAtaqueControl.setForeground(Color.WHITE);
             lblAtaqueControl.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            
+            JLabel lblAtaqueBang = new JLabel("<html>Este ataque elimina la mitad de las casilla vivas de un personaje <br>" + 
+            "al azar del objevito</html>");
+            lblAtaqueBang.setForeground(Color.WHITE);
+            lblAtaqueBang.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            
+            JLabel lblAtaqueMakimaIsListening = new JLabel("<html>Este no es un ataque como tal simplemente es una broma <br>" + 
+            "para hacerle al objetivo</html>");
+            lblAtaqueMakimaIsListening.setForeground(Color.WHITE);
+            lblAtaqueMakimaIsListening.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            
             panelDetalles.add(Box.createVerticalStrut(10));
             panelDetalles.add(lblAtaqueControl);
+            panelDetalles.add(Box.createVerticalStrut(5));
+            panelDetalles.add(lblAtaqueBang);
+            panelDetalles.add(Box.createVerticalStrut(5));
+            panelDetalles.add(lblAtaqueMakimaIsListening);
         }
         
         if(heroe.getAtaque().equals("Estoy codificando")){

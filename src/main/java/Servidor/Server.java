@@ -193,7 +193,7 @@ public class Server {
             currentTurnIndex = 0;
 
             broadcast(new CommandMessage(
-                    new String[]{"SERVER", "Nueva ronda iniciada"}
+                    new String[]{"Nueva ronda iniciada"}
             ));
 
         } else {
@@ -230,7 +230,7 @@ public synchronized void eliminarjugador(ThreadServidor target) {
 }
         
  
-    private void VerificarGanador(){
+    public void VerificarGanador(){
         if (turnOrder.size() == 1) {
         ThreadServidor ganador = turnOrder.get(0);
         broadcast(new CommandGanador(ganador.name));

@@ -13,25 +13,35 @@ import Servidor.ThreadServidor;
  */
 public class CommandEliminarJugador extends Command{
 
-    public CommandEliminarJugador(String objetivo) {
-        super(CommandType.ELIMINARJUGADOR, new String[]{objetivo});
+    public CommandEliminarJugador(String objetivo, String s) {
+        super(CommandType.ELIMINARJUGADOR, new String[]{objetivo, s});
     }
 
     @Override
     public void processForServer(ThreadServidor threadServidor) {
         String objetivo = getParameters()[0];
+        String state = getParameters()[1];
         Server server = threadServidor.getRefServer();
         
         ThreadServidor target = server.getClientByName(objetivo);
         
         server.eliminarjugador(target);
         
-        System.out.println("Jugador eliminado de turnos correctamente: " + objetivo);
         for(ThreadServidor p : server.turnOrder){
             System.out.println(p.name);
         }
+        String estadoDerrota;
+        if(state.equals("R")){
+            estadoDerrota = " se ha rendido";
+        }else{
+            estadoDerrota = " ha sido eliminado";
+        }
+        server.broadcast(new CommandMessage(new String[]{"El jugador " + objetivo + estadoDerrota}));
+        
         
         this.setIsBroadcast(false);
     
     }
+    
+    
 }

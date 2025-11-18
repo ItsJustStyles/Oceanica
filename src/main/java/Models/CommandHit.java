@@ -44,10 +44,45 @@ public class CommandHit extends Command{
         int fila3 = Integer.parseInt(row3);
         int columna3 = Integer.parseInt(col3);
         
-        String mensaje;
         String registro = "Se recibio un ataque del jugador " + attacker + " usando " + p + " con el ataque: " + ataque;
+        boolean exitoAttack = client.getRefFrame().recibirAtaqueCliente(p, ataque, fila, columna, fila2, columna2, fila3, columna3, registro, attacker);
+        
+        String ataqueAnterior = ataque;
+        if(ataque.equals("Control")){
+            p = client.getRefFrame().getPersonajeControlado();
+            ataque = client.getRefFrame().getAtaqueControlado();
+            
+            int[] filas = client.getRefFrame().getFilasControladas();
+            int[] columnas = client.getRefFrame().getColumnasControladas();
+            
+            fila = filas[0];
+            fila2 = filas[1];
+            fila3 = filas[2];
+            
+            columna = columnas[0];
+            columna2 = columnas[1];
+            columna3 = columnas[2];
+            
+        }
+        
+        
+        String mensaje;
+        
+        if(ataqueAnterior.equals("Control")){
+            if(ataque.equals("KrakenBreath")){
+                mensaje = "El jugador: " + attacker + " controlo a tu personaje: " + p + " usando a Makima y uso el ataque " + ataque + " en fila: " + fila + " y columna: " + col; 
+            }else if(ataque.equals("ThreeLines")){
+                mensaje = "El jugador: " + attacker + " controlo a tu personaje: " + p + " usando a Makima y uso el ataque: " + ataque + " en los puntos: " +
+                "(" + fila + ", " + columna + "), " + 
+                "(" + fila2 + ", " + columna2 + "), " + 
+                "(" + fila3 + ", " + columna3 + ")";;
+            }else{
+               mensaje = "El jugador: " + attacker + " controlo a tu personaje: " + p + " usando a Makima y uso el ataque: " + ataque; 
+            }
+        }else{
+        
         if(ataque.equals("KrakenBreath")){
-           mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque + " en fila: " + row + " y columna: " + col; 
+           mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque + " en fila: " + fila + " y columna: " + col; 
         }else if(ataque.equals("ThreeLines")){
             mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque + " en los puntos: " +
     "(" + fila + ", " + columna + "), " + 
@@ -56,8 +91,9 @@ public class CommandHit extends Command{
         }else{
            mensaje = "El jugador: " + attacker + " te atacó con " + p + " usando: " + ataque; 
         }
+    }
         
-        if(client.getRefFrame().recibirAtaqueCliente(p, ataque, fila, columna, fila2, columna2, fila3, columna3, registro)){
+        if(exitoAttack){
             client.getRefFrame().writeBitacora(mensaje);
             exito = true;
         }else{
@@ -67,7 +103,7 @@ public class CommandHit extends Command{
         if(client.getRefFrame().haMuerto()){
             client.getRefFrame().writeBitacora("Has muerto");
             client.getRefFrame().mostrarDerrota();
-            CommandEliminarJugador cmd = new CommandEliminarJugador(client.name); 
+            CommandEliminarJugador cmd = new CommandEliminarJugador(client.name, "D"); 
             try {
                 client.objectSender.writeObject(cmd);
                 client.objectSender.flush();

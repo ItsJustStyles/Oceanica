@@ -47,7 +47,13 @@ public class HoraDeBalatrear extends Ataque {
 
     public void Cavendish() {
         sonido = new ReproductorSonido("/sonidos/multhit2.wav", refFrame); //hay q cambiarlo o hacerle un loop abajo
-        int[] filas = {5, 10, 15};
+        //Cambie esto para que ahora no sean fijas int[] filas = {5, 10, 15};
+        Random random = new Random();
+        int f1 = random.nextInt(20) + 1;
+        int f2 = random.nextInt(20) + 1;
+        int f3 = random.nextInt(20) + 1;
+        
+        int[] filas = {f1, f2, f3};
 
         for (int f : filas) {
             for (int y = 1; y <= 30; y++) {

@@ -37,10 +37,46 @@ public class infoAtaques {
                 args = new String[]{"Volcano raising", "Volcano explosion", "Termal rush"};
                 return args;
             case "Control":
-                args = new String[]{"Bang", "Bang", "Bang"};
+                args = new String[]{"Control", "Bang", "Makima is listening"};
                 return args;
             case "Poseidon Trident":
                 args = new String[]{"Three lines", "Three numbers", "Control the Kraken"};
+                return args;
+            case "Hora de balatrear":
+                args = new String[]{"BluePrint", "Balatrito", "Cavendish"};
+                return args;
+            default:
+                args = null;
+                return args;
+        }
+    }
+    
+    public String[] buscarControl(){
+        String[] args;
+        switch(ataque){
+            case "Fish Telepathy":
+                args = new String[]{"Cardumen", "SharkAttack", "Pulp"};
+                return args;
+            case "Release the Kraken":
+                args = new String[]{"Tentaculos", "KrakenBreath", "ReleaseTheKraken"};
+                return args;
+            case "Thunders under the sea":
+                args = new String[]{"ThunderRain", "PoseidonThunders", "EelAttack"};
+                return args;
+            case "Waves control":
+                args = new String[]{"SwirlRaising", "SendHumanGarbage", "RadioactiveRush"};
+                return args;
+            case "Estoy codificando":
+                args = new String[]{"EstoNoEsUnJuego", "NoSePuedeMas", "MicroprocesadorX264", "Slower"};
+                return args;
+            case "Undersea Fire":
+                args = new String[]{"VolcanoRaising", "VolcanoExplosion", "TermalRush"};
+                return args;
+            case "Control":
+                args = new String[]{"Bang"};
+                return args;
+            case "Poseidon Trident":
+                args = new String[]{"ThreeLines", "ThreeNumbers", "ControlTheKraken"};
                 return args;
             case "Hora de balatrear":
                 args = new String[]{"BluePrint", "Balatrito", "Cavendish"};

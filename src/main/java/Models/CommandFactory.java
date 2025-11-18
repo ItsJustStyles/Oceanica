@@ -43,6 +43,8 @@ public class CommandFactory {
                 return new CommandSaltarTurno(args);
             case "LOGRESUMEN":
                 return new CommandLogResumen(args);
+            case "RENDIRSE":
+                return new CommandRendirse(args);
             default:
                 return null;
         }

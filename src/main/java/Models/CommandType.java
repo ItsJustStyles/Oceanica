@@ -31,6 +31,7 @@ public enum CommandType {
     CONSULTARCELDA(3),
     SALTARTURNO(1),
     LOGRESUMEN(1),
+    RENDIRSE(1),
     UNICAST(1),
     ELIMINARJUGADOR(0),
     GANADOR(0);
