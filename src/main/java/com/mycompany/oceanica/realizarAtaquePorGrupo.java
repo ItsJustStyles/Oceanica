@@ -133,6 +133,20 @@ public class realizarAtaquePorGrupo {
                 }else{
                     return false;
                 }
+            case "Hora de balatrear":
+                HoraDeBalatrear attack8 = new HoraDeBalatrear(100, tablero, refFrame ,registro);
+                if(ataqueSolicitado.equals("BluePrint")){
+                    attack8.BluePrint();
+                    return true;
+                }else if(ataqueSolicitado.equals("Balatrito")){
+                    attack8.Balatrito();
+                    return true;
+                }else if(ataqueSolicitado.equals("Cavendish")){
+                    attack8.Cavendish();
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 return false;
         }           

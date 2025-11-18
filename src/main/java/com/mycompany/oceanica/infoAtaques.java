@@ -42,6 +42,9 @@ public class infoAtaques {
             case "Poseidon Trident":
                 args = new String[]{"Three lines", "Three numbers", "Control the Kraken"};
                 return args;
+            case "Hora de balatrear":
+                args = new String[]{"BluePrint", "Balatrito", "Cavendish"};
+                return args;
             default:
                 args = null;
                 return args;

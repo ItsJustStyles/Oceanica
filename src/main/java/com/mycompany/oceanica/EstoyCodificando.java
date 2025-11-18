@@ -11,6 +11,7 @@ package com.mycompany.oceanica;
 public class EstoyCodificando extends Ataque{
     Juego refFrame;
     private String registro;
+    ReproductorSonido sonido;
     
     public EstoyCodificando(int dano, Tablero tablero, Juego refFrame, String registro) {
         this.refFrame = refFrame;
@@ -24,7 +25,7 @@ public class EstoyCodificando extends Ataque{
     }
     
     public void Microprocesador_x264(){
-        ReproductorSonido sonido = new ReproductorSonido("/sonidos/Microprocesador.wav", refFrame);
+        sonido = new ReproductorSonido("/sonidos/Microprocesador.wav", refFrame);
         sonido.play();
         final int MAX_FILAS = 20;
         final int MAX_COLUMNAS = 30;
@@ -41,10 +42,11 @@ public class EstoyCodificando extends Ataque{
                 }
             }
         }
+        //sonido.close();
     }
     
     public void Slower(){
-        ReproductorSonido sonido = new ReproductorSonido("/sonidos/Slower.wav", refFrame);
+        sonido = new ReproductorSonido("/sonidos/Slower.wav", refFrame);
         sonido.play();
         final int MAX_FILAS = 20;
         final int MAX_COLUMNAS = 30;
@@ -62,10 +64,11 @@ public class EstoyCodificando extends Ataque{
                 }
             }
         }
+        //sonido.close();
     }
     
     public void NoSePuedeMas(){
-        ReproductorSonido sonido = new ReproductorSonido("/sonidos/NoSePuedeMas.wav", refFrame);
+        sonido = new ReproductorSonido("/sonidos/NoSePuedeMas.wav", refFrame);
         sonido.play();
         final int MAX_FILAS = 20;
         final int MAX_COLUMNAS = 30;
@@ -80,6 +83,7 @@ public class EstoyCodificando extends Ataque{
                 }
             }
         }
+        //sonido.close();
     }
     
     public void EstoNoEsUnJuego(){
@@ -88,6 +92,7 @@ public class EstoyCodificando extends Ataque{
         }
         ReproductorSonido sonido = new ReproductorSonido("/sonidos/EstoNoEsUnJuego.wav", refFrame);
         sonido.play();
+        //sonido.close();
     }
     
 }

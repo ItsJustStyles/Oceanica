@@ -76,7 +76,19 @@ public class ReproductorSonido {
             clip.start();
         }
     }
-
+    
+    public void playSeguido(){
+            if (clip != null) {
+            
+            if (refFrame.menuPersonajes != null) {
+                refFrame.menuPersonajes.stop();
+            }
+            
+            clip.stop();
+            clip.setFramePosition(0);
+            clip.start();
+    }}
+    
     // Reproducir en loop infinito
     public void loop() {
         if (clip != null) {
@@ -96,6 +108,7 @@ public class ReproductorSonido {
         if (clip != null) {
             clip.close();
         }
+        refFrame.menuPersonajes.loop();
     }
    
 }
