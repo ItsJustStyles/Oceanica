@@ -370,7 +370,7 @@ public class Juego extends javax.swing.JFrame {
         dialog.setLocationRelativeTo(this);
         dialog.setLayout(new BorderLayout());
 
-        JLabel lbl = new JLabel("🎉 ¡" + ganador + " ha ganado! 🎉", SwingConstants.CENTER);
+        JLabel lbl = new JLabel("¡" + ganador + " ha ganado!", SwingConstants.CENTER);
         lbl.setFont(new Font("Arial", Font.BOLD, 18));
 
         JButton btn = new JButton("Aceptar");
