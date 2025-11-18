@@ -18,7 +18,7 @@ public class CommandMostrarCeldasOcupadas extends Command{
 
     @Override
     public void processForServer(ThreadServidor threadServidor) {
-        CommandUnicast comandoARealizar = new CommandUnicast("MOSTRARCELDASOCUPADAS", "x", "y");
+        CommandUnicast comandoARealizar = new CommandUnicast("MOSTRARCELDASOCUPADAS", "x", "y", threadServidor.name);
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(threadServidor.name);
         try {
             targetThread.objectSender.writeObject(comandoARealizar);

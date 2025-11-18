@@ -10,15 +10,15 @@ import Servidor.ThreadServidor;
  *
  * @author lacay
  */
-public class CommandPintarVivas extends Command{
+public class CommandLogResumen extends Command{
 
-    public CommandPintarVivas(String[] args) {
-        super(CommandType.PINTARVIVAS, args);
+    public CommandLogResumen(String[] args) {
+        super(CommandType.LOGRESUMEN, args);
     }
 
     @Override
     public void processForServer(ThreadServidor threadServidor) {
-        CommandUnicast comandoARealizar = new CommandUnicast("PINTARVIVAS", "x", "y", threadServidor.name);
+        CommandUnicast comandoARealizar = new CommandUnicast("LOGRESUMEN", "x", "y", threadServidor.name);
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(threadServidor.name);
         try {
             targetThread.objectSender.writeObject(comandoARealizar);

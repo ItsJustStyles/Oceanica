@@ -13,8 +13,8 @@ import Servidor.ThreadServidor;
  */
 public class CommandUnicast extends Command{
 
-    public CommandUnicast(String comando, String x, String y) {
-        super(CommandType.UNICAST, new String[]{comando, x, y});
+    public CommandUnicast(String comando, String x, String y, String nombre) {
+        super(CommandType.UNICAST, new String[]{comando, x, y, nombre});
     }
 
     @Override
@@ -26,6 +26,7 @@ public class CommandUnicast extends Command{
     public void processInClient(Client client) {
         String[] params = this.getParameters();
         String comandoARealizar = params[0];
+        String nombre = params[3];
         
         int x;
         int y;
@@ -35,6 +36,10 @@ public class CommandUnicast extends Command{
         }else{
             x = 0;
             y = 0;
+        }
+        
+        if(comandoARealizar.equals("SALTARTURNO")){
+            client.getRefFrame().writeBitacora("Has saltado tu turno");
         }
         
         client.getRefFrame().comandos(comandoARealizar, x, y);

@@ -37,10 +37,12 @@ Cliente\Client.class
 com\mycompany\oceanica\FishTelepathy.class
 com\mycompany\oceanica\GestorJson.class
 com\mycompany\oceanica\Juego$1.class
+Models\CommandSaltarTurno.class
 Models\CommandFactory.class
 com\mycompany\oceanica\ReproductorSonido$1.class
 Models\CommandGiveup.class
 com\mycompany\oceanica\EstoyCodificando.class
+Models\CommandLogResumen.class
 Cliente\FrameClient$2.class
 com\mycompany\oceanica\Tablero.class
 com\mycompany\oceanica\WavesControl.class
@@ -53,6 +55,7 @@ com\mycompany\oceanica\Casilla$2.class
 com\mycompany\oceanica\Juego$4.class
 com\mycompany\oceanica\Juego$7.class
 com\mycompany\oceanica\ReleaseTheKraken.class
+Models\CommandRegistrar.class
 Models\CommandPorcentajeCeldas.class
 com\mycompany\oceanica\realizarAtaquePorGrupo.class
 Models\CommandAttack.class

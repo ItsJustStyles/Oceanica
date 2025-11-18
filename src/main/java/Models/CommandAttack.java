@@ -101,6 +101,8 @@ public class CommandAttack extends Command{
         //System.out.println(objetivo);
         
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(objetivo);
+        ThreadServidor selfThread = threadServidor.getRefServer().getClientByName(threadServidor.name);
+        
         if(targetThread != null){
             
             String attackerName = threadServidor.name;
@@ -114,6 +116,7 @@ public class CommandAttack extends Command{
             }
             
             hitCommand = new CommandHit(p, ataque, attackerName, row, columna, row2, columna2, row3, columna3);
+            CommandRegistrar registro = new CommandRegistrar(threadServidor.name);
             // 3. UNICAST: Enviar el comando SÓLO al cliente objetivo
             try {
                 targetThread.objectSender.writeObject(hitCommand);
@@ -122,9 +125,21 @@ public class CommandAttack extends Command{
                 // Manejar la desconexión del objetivo
                 threadServidor.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
             }
+            // Unicast para registrar en el client del atacante
+            try {
+                selfThread.objectSender.writeObject(registro);
+                selfThread.objectSender.flush();
+            } catch (java.io.IOException ex) {
+                // Manejar la desconexión del objetivo
+                selfThread.getRefServer().getRefFrame().writeMessage("Error al enviar ataque a " + objetivo);
+            }
+            
             exitoAttack = hitCommand.isExito();
             String exito = String.valueOf(!exitoAttack);
-            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna, row2, columna2, row3, columna3, exito};
+            boolean haPerdido = hitCommand.isMuerto();
+            String muerte = String.valueOf(!exitoAttack);
+        
+            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna, row2, columna2, row3, columna3, exito, muerte};
             CommandAttack broadcastCommand = new CommandAttack(broadcastParams);
             
             // Reenviar a todos (BROADCAST)
@@ -138,6 +153,7 @@ public class CommandAttack extends Command{
         // =============================================================
         // AVANZAR TURNO DESPUÉS REALIZAR EL ATAQUE
         // =============================================================
+        
         server.avanzarTurno();
         
     }
@@ -157,7 +173,8 @@ public class CommandAttack extends Command{
         String col3 = params[8];
         
         String exitoAtaque = params[9];
-        System.out.println(exitoAtaque);                            
+        String loseGame = params[10];
+        //System.out.println(loseGame);                            
         
         
         

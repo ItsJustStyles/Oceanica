@@ -22,7 +22,7 @@ public class CommandConsultarCelda extends Command{
         String x = params[1];
         String y = params[2];
         
-        CommandUnicast comandoARealizar = new CommandUnicast("CONSULTARCELDA", x, y);
+        CommandUnicast comandoARealizar = new CommandUnicast("CONSULTARCELDA", x, y, threadServidor.name);
         ThreadServidor targetThread = threadServidor.getRefServer().getClientByName(threadServidor.name);
         try {
             targetThread.objectSender.writeObject(comandoARealizar);

@@ -13,6 +13,7 @@ import Servidor.ThreadServidor;
  */
 public class CommandHit extends Command{
     boolean exito;
+    boolean muerto;
     public CommandHit(String p, String ataque, String attackerName, String row, String col, String row2, String col2, String row3, String col3) {
         super(CommandType.HIT,new String[]{p,ataque, attackerName, row, col, row2, col2, row3, col3});
     }
@@ -63,10 +64,23 @@ public class CommandHit extends Command{
         }else{
             exito = false;
         }
+        
+        if(client.getRefFrame().haMuerto()){
+            client.getRefFrame().writeBitacora("Has muerto xd");
+            muerto = true;
+        }else{
+            muerto = false;
+        }
 
     }
 
     public boolean isExito() {
         return exito;
     }
+
+    public boolean isMuerto() {
+        return muerto;
+    }
+    
+    
 }

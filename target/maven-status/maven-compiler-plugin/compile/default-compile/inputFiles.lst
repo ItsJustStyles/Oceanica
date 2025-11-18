@@ -11,6 +11,7 @@ C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandTe
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Cliente\ThreadClient.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\ReleaseTheKraken.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandGiveup.java
+C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandLogResumen.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\Juego.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandPrivateMessage.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Servidor\Server.java
@@ -18,6 +19,7 @@ C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandUn
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandMessage.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandAttack.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Servidor\FrameServer.java
+C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandSaltarTurno.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandName.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\Remolino.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\realizarAtaquePorGrupo.java
@@ -36,6 +38,7 @@ C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oc
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\PoseidonTrident.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\SonidoMenu.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandFactory.java
+C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandRegistrar.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandPorcentajeCeldas.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandMostrarCeldasOcupadas.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Cliente\FrameClient.java

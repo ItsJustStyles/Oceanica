@@ -171,6 +171,10 @@ public class Server {
         broadcast(turnoCommand);
 }
 
+    public ThreadServidor turnoActual(){
+        ThreadServidor jugador = turnOrder.get(currentTurnIndex);
+        return jugador;
+    }
 
     public ThreadServidor getCurrentTurnPlayer() {
         return turnOrder.get(currentTurnIndex);
@@ -182,7 +186,7 @@ public class Server {
         // ¿Se acabó la ronda completa?
         if (attacksThisRound >= turnOrder.size()) {
 
-            Collections.shuffle(turnOrder); // Nuevo orden aleatorio
+            //Collections.shuffle(turnOrder); // Nuevo orden aleatorio
             attacksThisRound = 0;
             currentTurnIndex = 0;
 
@@ -198,5 +202,4 @@ public class Server {
 }
 
 // ===================================================================
-  
 }

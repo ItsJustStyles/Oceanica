@@ -39,6 +39,10 @@ public class CommandFactory {
                 return new CommandMostrarCeldasOcupadas(args);
             case "CONSULTARCELDA":
                 return new CommandConsultarCelda(args);
+            case "SALTARTURNO":
+                return new CommandSaltarTurno(args);
+            case "LOGRESUMEN":
+                return new CommandLogResumen(args);
             default:
                 return null;
         }
