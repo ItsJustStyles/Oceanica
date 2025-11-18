@@ -29,6 +29,7 @@ C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandPi
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\Oceanica.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Servidor\ThreadServidor.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandType.java
+C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandEliminarJugador.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandHit.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\FishTelepathy.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\Command.java
@@ -47,6 +48,7 @@ C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandCo
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\UnderseaFire.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandReady.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandStartGame.java
+C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\CommandGanador.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\HoraDeBalatrear.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\Models\lobbyUpdateCommand.java
 C:\Users\lacay\OneDrive\Desktop\Oceanica\Oceanica\src\main\java\com\mycompany\oceanica\WebPopupExternal.java

@@ -13,14 +13,13 @@ import Servidor.ThreadServidor;
  */
 public class CommandHit extends Command{
     boolean exito;
-    boolean muerto;
     public CommandHit(String p, String ataque, String attackerName, String row, String col, String row2, String col2, String row3, String col3) {
         super(CommandType.HIT,new String[]{p,ataque, attackerName, row, col, row2, col2, row3, col3});
     }
 
     @Override
     public void processForServer(ThreadServidor threadServidor) {
-       
+        
     }
 
     @Override
@@ -66,10 +65,17 @@ public class CommandHit extends Command{
         }
         
         if(client.getRefFrame().haMuerto()){
-            client.getRefFrame().writeBitacora("Has muerto xd");
-            muerto = true;
+            client.getRefFrame().writeBitacora("Has muerto");
+            client.getRefFrame().mostrarDerrota();
+            CommandEliminarJugador cmd = new CommandEliminarJugador(client.name); 
+            try {
+                client.objectSender.writeObject(cmd);
+                client.objectSender.flush();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }else{
-            muerto = false;
+            
         }
 
     }
@@ -78,9 +84,5 @@ public class CommandHit extends Command{
         return exito;
     }
 
-    public boolean isMuerto() {
-        return muerto;
-    }
-    
-    
+        
 }

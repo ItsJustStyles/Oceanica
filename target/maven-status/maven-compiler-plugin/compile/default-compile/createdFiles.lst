@@ -26,6 +26,7 @@ Models\CommandHit.class
 com\mycompany\oceanica\Juego$6.class
 Servidor\Server.class
 Models\CommandPrivateMessage.class
+Models\CommandEliminarJugador.class
 com\mycompany\oceanica\SonidoMenu.class
 com\mycompany\oceanica\Remolino.class
 Cliente\ThreadClient.class
@@ -74,5 +75,6 @@ com\mycompany\oceanica\Casilla$1.class
 Cliente\FrameClient$4.class
 Servidor\FrameServer.class
 Models\CommandUtil.class
+Models\CommandGanador.class
 Models\lobbyUpdateCommand.class
 com\mycompany\oceanica\PoseidonTrident.class

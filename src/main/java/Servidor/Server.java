@@ -5,6 +5,7 @@
 package Servidor;
 import Models.CommandStartGame;
 import Models.Command;
+import Models.CommandGanador;
 import Models.CommandMessage;
 import Models.CommandTurn;
 import Models.lobbyUpdateCommand;
@@ -27,7 +28,7 @@ import java.util.Set;
  */
 public class Server {
     // ---- SISTEMA DE TURNOS ----
-    private List<ThreadServidor> turnOrder = new ArrayList<>();
+    public List<ThreadServidor> turnOrder = new ArrayList<>();
     private int currentTurnIndex = 0;
     private int attacksThisRound = 0;
     public boolean turnSystemEnabled = false;
@@ -67,6 +68,7 @@ public class Server {
             System.out.println("Mínimo de jugadores listos alcanzado. Iniciando partida...");
             broadcast(new CommandStartGame());
             iniciarTurnos();
+            //VerificarGanador(); // Como prueba a ver si sirve xd
         }
 }
     
@@ -202,4 +204,38 @@ public class Server {
 }
 
 // ===================================================================
+    
+public synchronized void eliminarjugador(ThreadServidor target) {
+
+    // 1. Encontrar su posición en la lista de turnos
+    int index = turnOrder.indexOf(target);
+
+    // 2. Removerlo del orden de turnos
+    if (index != -1) {
+        turnOrder.remove(index);
+    }
+
+    // 3. Ajustar el turno actual si es necesario
+    if (index < currentTurnIndex) {
+        currentTurnIndex--;
+    }
+
+    // 4. Si el jugador eliminado era el jugador actual
+    if (currentTurnIndex == index) {
+        avanzarTurno();  // Pasar al siguiente jugador válido
+    }
+    
+    System.out.println("Jugador eliminado de turnos y clientes: " + target.name);
+    VerificarGanador();
+}
+        
+ 
+    private void VerificarGanador(){
+        if (turnOrder.size() == 1) {
+        ThreadServidor ganador = turnOrder.get(0);
+        broadcast(new CommandGanador(ganador.name));
+        }
+    }
+
+
 }

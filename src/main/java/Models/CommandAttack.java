@@ -41,7 +41,7 @@ public class CommandAttack extends Command{
 
         if (server.turnSystemEnabled) {
             ThreadServidor jugadorActual = server.getCurrentTurnPlayer();
-
+            
             if (jugadorActual != threadServidor) {
                 // NO ES SU TURNO → rechazo del ataque
                 System.out.println("NO ES TU TURNO");
@@ -136,10 +136,8 @@ public class CommandAttack extends Command{
             
             exitoAttack = hitCommand.isExito();
             String exito = String.valueOf(!exitoAttack);
-            boolean haPerdido = hitCommand.isMuerto();
-            String muerte = String.valueOf(!exitoAttack);
         
-            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna, row2, columna2, row3, columna3, exito, muerte};
+            String[] broadcastParams = new String[]{threadServidor.name, objetivo, ataque ,row, columna, row2, columna2, row3, columna3, exito};
             CommandAttack broadcastCommand = new CommandAttack(broadcastParams);
             
             // Reenviar a todos (BROADCAST)
@@ -172,9 +170,7 @@ public class CommandAttack extends Command{
         String row3 = params[7]; 
         String col3 = params[8];
         
-        String exitoAtaque = params[9];
-        String loseGame = params[10];
-        //System.out.println(loseGame);                            
+        String exitoAtaque = params[9];                           
         
         
         

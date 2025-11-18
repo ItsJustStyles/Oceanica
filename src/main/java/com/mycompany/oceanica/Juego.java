@@ -10,6 +10,7 @@ import Models.CommandFactory;
 import Models.CommandReady;
 import Models.CommandUtil;
 import Servidor.Server;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dialog;
@@ -50,6 +51,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
@@ -332,7 +334,7 @@ public class Juego extends javax.swing.JFrame {
     }
     
     public boolean haMuerto(){
-        if(tablero.casillasVivas() <= 0){
+        if(tablero.casillasDestruidas() == 600){
             return true;
         }
         return false;
@@ -360,6 +362,42 @@ public class Juego extends javax.swing.JFrame {
                 break;
         }
         
+    }
+    
+        public void mostrarVictoria(String ganador) {
+        JDialog dialog = new JDialog(this, "Victoria", true);
+        dialog.setSize(350, 180);
+        dialog.setLocationRelativeTo(this);
+        dialog.setLayout(new BorderLayout());
+
+        JLabel lbl = new JLabel("🎉 ¡" + ganador + " ha ganado! 🎉", SwingConstants.CENTER);
+        lbl.setFont(new Font("Arial", Font.BOLD, 18));
+
+        JButton btn = new JButton("Aceptar");
+        btn.addActionListener(e -> dialog.dispose());
+
+        dialog.add(lbl, BorderLayout.CENTER);
+        dialog.add(btn, BorderLayout.SOUTH);
+
+        dialog.setVisible(true);
+    }
+
+        public void mostrarDerrota() {
+        JDialog dialog = new JDialog(this, "Derrota", true);
+        dialog.setSize(350, 180);
+        dialog.setLocationRelativeTo(this);
+        dialog.setLayout(new BorderLayout());
+
+        JLabel lbl = new JLabel("Has sido eliminado️", SwingConstants.CENTER);
+        lbl.setFont(new Font("Arial", Font.BOLD, 18));
+
+        JButton btn = new JButton("Aceptar");
+        btn.addActionListener(e -> dialog.dispose());
+
+        dialog.add(lbl, BorderLayout.CENTER);
+        dialog.add(btn, BorderLayout.SOUTH);
+
+        dialog.setVisible(true);
     }
     
     private void mostrarPanelInformacion(Personaje heroe) {
